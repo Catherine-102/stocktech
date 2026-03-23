@@ -1,24 +1,1310 @@
-<!doctype html><html data-build-id="dbd8ed0f31" data-git-hash="bb597a89c8d1093f93aa4a7a04757ddbd8ed0f31" data-build-timestamp="1774145663" data-version="1.0.0" data-env="" lang="en" data-theme="claude" data-mode="dark" data-p4n="true" class="h-screen antialiased scroll-smooth"><head data-ion-ip-country="FR">
-  
-<link rel="preconnect" href="https://assets-proxy.anthropic.com" crossorigin><link rel="dns-prefetch" href="https://assets-proxy.anthropic.com"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Claude</title><meta name="description" content="Claude is Anthropic's AI, built for problem solvers. Tackle complex challenges, analyze data, write code, and think through your hardest work."><meta name="apple-itunes-app" content="app-id=6473753684"><meta property="og:type" content="website"><meta property="og:site_name" content="Claude"><meta property="og:image" content="https://claude.ai/images/claude_ogimage.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="icon" type="image/svg+xml" href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/cd02a42d9-Vq_H3mgS.svg"><link rel="icon" type="image/png" sizes="32x32" href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/ce67964e7-CAX1bqSh.png"><link rel="icon" type="image/png" sizes="16x16" href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/c03e51811-DebilQLI.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/c129d018a-jJjJELY8.png"><link rel="apple-touch-startup-image" href="/images/claude_app_icon.png"><link rel="manifest" href="/manifest.json"><meta name="mobile-web-app-capable" content="yes"><link rel="preload" href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/cc27851ad-CFxw3nG7.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/c66fc489e-C-BHYa_K.woff2" as="font" type="font/woff2" crossorigin><script nonce="NoC7yxQa0m+8xaS+E1nQCQ==">void 0===globalThis.process&&(globalThis.process={env:{},cwd:function(){return"/"}}),void 0===globalThis.global&&(globalThis.global=globalThis)</script><script type="application/ld+json" nonce="NoC7yxQa0m+8xaS+E1nQCQ==">{
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "name": "Claude",
-            "alternateName": ["Claude.ai", "Claude by Anthropic"],
-            "url": "https://claude.com"
-          },
-          {
-            "@type": "Organization",
-            "name": "Anthropic",
-            "url": "https://www.anthropic.com",
-            "logo": "https://claude.ai/images/claude_ogimage.png",
-            "sameAs": [
-              "https://x.com/AnthropicAI",
-              "https://www.linkedin.com/company/anthropic",
-              "https://www.youtube.com/@anthropic-ai"
-            ]
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>StockTech</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#080b12;--s1:#0f1420;--s2:#161c2e;--s3:#1e2538;--border:#252d45;
+  --accent:#38bdf8;--green:#34d399;--red:#f87171;--orange:#fbbf24;--purple:#a78bfa;
+  --text:#e8eeff;--text2:#6b7499;--text3:#3a4060;
+  --font:'Outfit',sans-serif;--mono:'IBM Plex Mono',monospace;
+  --radius:16px;--nav-h:68px;
+  --safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);
+}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font)}
+ 
+/* PAGES */
+.page{display:none;position:fixed;inset:0;bottom:calc(var(--nav-h) + var(--safe-b));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-bottom:16px}
+.page.active{display:block}
+ 
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(8,11,18,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:calc(var(--safe-t) + 12px) 20px 14px;border-bottom:1px solid var(--border)}
+.topbar-row{display:flex;align-items:center;justify-content:space-between}
+.topbar-title{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.topbar-title span{color:var(--accent)}
+.topbar-sub{font-size:12px;color:var(--text2);margin-top:2px}
+.topbar-btn{background:var(--s3);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:9px 16px;font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer}
+.site-chip{display:inline-flex;align-items:center;gap:5px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);color:var(--accent);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700}
+ 
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(8,11,18,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;height:calc(var(--nav-h) + var(--safe-b));padding-bottom:var(--safe-b)}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:8px 4px;position:relative}
+.nav-item.active .nav-icon{color:var(--accent)}
+.nav-item.active .nav-label{color:var(--accent)}
+.nav-icon{font-size:22px;transition:transform .2s}
+.nav-item.active .nav-icon{transform:scale(1.15)}
+.nav-label{font-size:10px;font-weight:600;color:var(--text2)}
+.nav-scan-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer}
+.nav-scan-circle{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#6366f1);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 24px rgba(56,189,248,.45);margin-top:-16px;border:3px solid var(--bg);transition:transform .2s}
+.nav-scan-btn:active .nav-scan-circle{transform:scale(.92)}
+.nav-badge{position:absolute;top:6px;right:calc(50% - 20px);background:var(--red);color:white;border-radius:10px;font-size:9px;font-weight:700;padding:1px 5px}
+ 
+/* KPI */
+.kpi-scroll{display:flex;gap:12px;padding:16px 16px 0;overflow-x:auto;scrollbar-width:none}
+.kpi-scroll::-webkit-scrollbar{display:none}
+.kpi-card{flex:0 0 138px;background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);padding:16px;position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.kpi-blue::before{background:var(--accent)}.kpi-green::before{background:var(--green)}
+.kpi-orange::before{background:var(--orange)}.kpi-red::before{background:var(--red)}
+.kpi-purple::before{background:var(--purple)}
+.kpi-label{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text2);margin-bottom:8px}
+.kpi-val{font-size:32px;font-weight:800;line-height:1}
+.kpi-sub{font-size:11px;color:var(--text2);margin-top:4px}
+ 
+/* SECTION */
+.section-head{display:flex;align-items:center;justify-content:space-between;padding:20px 16px 10px}
+.section-title{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0}
+ 
+/* SEARCH */
+.search-wrap{padding:0 16px 12px;position:relative}
+.search-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:13px 16px 13px 44px;font-size:15px;font-family:var(--font);color:var(--text);outline:none}
+.search-input:focus{border-color:var(--accent)}
+.search-input::placeholder{color:var(--text3)}
+.search-icon{position:absolute;left:28px;top:50%;transform:translateY(-50%);font-size:18px;pointer-events:none}
+ 
+/* ARTICLE CARD */
+.article-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);margin:0 16px 10px;padding:14px 16px;transition:border-color .2s}
+.article-card:active{border-color:var(--accent)}
+.ac-top{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+.ac-ref{font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(56,189,248,.08);padding:3px 8px;border-radius:6px;white-space:nowrap}
+.ac-cat{font-size:11px;color:var(--text2);background:var(--s3);padding:3px 8px;border-radius:6px;white-space:nowrap}
+.ac-name{font-size:15px;font-weight:600;line-height:1.3;flex:1}
+.ac-bottom{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.stock-bar-wrap{flex:1;height:5px;background:var(--s3);border-radius:3px;overflow:hidden}
+.stock-bar-fill{height:100%;border-radius:3px;transition:width .4s}
+.bar-ok{background:var(--green)}.bar-warn{background:var(--orange)}.bar-low{background:var(--red)}
+.ac-stock{font-family:var(--mono);font-size:14px;font-weight:600;white-space:nowrap}
+.ac-meta{font-size:11px;color:var(--text2);margin-bottom:8px;display:flex;gap:12px;flex-wrap:wrap}
+.ac-btns{display:flex;gap:8px}
+.btn-in{flex:1;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:var(--green);border-radius:10px;padding:11px;font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer}
+.btn-in:active{background:rgba(52,211,153,.25)}
+.btn-out{flex:1;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.3);color:var(--red);border-radius:10px;padding:11px;font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer}
+.btn-out:active{background:rgba(248,113,113,.25)}
+.btn-edit-sm{background:var(--s3);border:1px solid var(--border);color:var(--text2);border-radius:10px;padding:11px 14px;font-size:15px;font-family:var(--font);cursor:pointer}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.pill-ok{background:rgba(52,211,153,.15);color:var(--green)}
+.pill-warn{background:rgba(251,191,36,.15);color:var(--orange)}
+.pill-low{background:rgba(248,113,113,.15);color:var(--red)}
+ 
+/* SCAN */
+.scan-container{padding:16px}
+.cam-box{position:relative;width:100%;aspect-ratio:1;background:#000;border-radius:20px;overflow:hidden;border:2px solid var(--border);margin-bottom:14px}
+#cam-video{width:100%;height:100%;object-fit:cover}
+.cam-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.cam-frame{width:65%;aspect-ratio:1;position:relative;border-radius:12px;box-shadow:0 0 0 9999px rgba(0,0,0,.5)}
+.cam-corner{position:absolute;width:22px;height:22px;border-color:var(--accent);border-style:solid}
+.cam-corner.tl{top:-2px;left:-2px;border-width:3px 0 0 3px;border-radius:8px 0 0 0}
+.cam-corner.tr{top:-2px;right:-2px;border-width:3px 3px 0 0;border-radius:0 8px 0 0}
+.cam-corner.bl{bottom:-2px;left:-2px;border-width:0 0 3px 3px;border-radius:0 0 0 8px}
+.cam-corner.br{bottom:-2px;right:-2px;border-width:0 3px 3px 0;border-radius:0 0 8px 0}
+.cam-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);border-radius:2px;animation:scanline 2s ease-in-out infinite}
+@keyframes scanline{0%,100%{top:5%}50%{top:90%}}
+.cam-status{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:12px;font-weight:600;color:white;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.cam-flash{position:absolute;inset:0;background:white;opacity:0;pointer-events:none;border-radius:18px;transition:opacity .08s}
+.cam-flash.flash{opacity:.7}
+.cam-btn-row{display:flex;gap:10px;margin-bottom:14px}
+.btn-cam{flex:1;padding:15px;border-radius:14px;font-size:15px;font-weight:700;font-family:var(--font);cursor:pointer;border:none}
+.btn-cam:active{transform:scale(.97)}
+.btn-start{background:linear-gradient(135deg,var(--accent),#6366f1);color:white}
+.btn-stop{background:var(--s3);border:1px solid var(--border);color:var(--text2)}
+.manual-section{background:var(--s2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px}
+.manual-section label{font-size:11px;font-weight:700;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:8px}
+.big-ref-input{width:100%;background:var(--s3);border:2px solid var(--border);border-radius:10px;padding:14px 16px;font-size:18px;font-family:var(--mono);color:var(--text);outline:none;text-align:center;letter-spacing:2px}
+.big-ref-input:focus{border-color:var(--accent)}
+.type-toggle-row{display:flex;gap:8px;margin-bottom:12px}
+.type-opt{flex:1;padding:13px;border-radius:12px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;background:var(--s2);border:2px solid var(--border);color:var(--text2);font-family:var(--font);transition:all .2s}
+.type-opt.sel-in{background:rgba(52,211,153,.12);border-color:var(--green);color:var(--green)}
+.type-opt.sel-out{background:rgba(248,113,113,.12);border-color:var(--red);color:var(--red)}
+ 
+/* FOUND CARD */
+.found-card{background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.3);border-radius:var(--radius);padding:14px;margin-bottom:14px;display:none;animation:fadeIn .2s ease}
+.found-card.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.found-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.found-name{font-size:16px;font-weight:700}
+.found-ref{font-family:var(--mono);font-size:11px;color:var(--accent)}
+.found-fournisseur{font-size:11px;color:var(--text2);margin-top:2px}
+.found-stock{font-family:var(--mono);font-size:14px;color:var(--green);font-weight:700}
+.qty-row{display:flex;gap:8px;align-items:center}
+.qty-btn{width:50px;height:50px;border-radius:12px;background:var(--s3);border:1px solid var(--border);color:var(--text);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--font);flex-shrink:0}
+.qty-btn:active{background:var(--border)}
+.qty-input{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:12px;font-size:24px;font-family:var(--mono);font-weight:700;color:var(--text);text-align:center;outline:none;min-width:0}
+.btn-add-bl{flex:1.5;padding:14px;border-radius:12px;font-size:16px;font-weight:800;font-family:var(--font);cursor:pointer;border:none;background:var(--green);color:#071a10}
+.btn-add-bl:active{transform:scale(.96)}
+ 
+/* BL */
+.bl-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px}
+.bl-header{padding:13px 16px;background:var(--s2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.bl-header-title{font-size:14px;font-weight:700}
+.bl-item{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid rgba(37,45,69,.5)}
+.bl-item:last-child{border-bottom:none}
+.bl-info{flex:1;min-width:0}
+.bl-item-ref{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600}
+.bl-item-name{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bl-item-fourn{font-size:11px;color:var(--text2)}
+.bl-badge{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700;flex-shrink:0}
+.bl-badge-in{background:rgba(52,211,153,.15);color:var(--green)}
+.bl-badge-out{background:rgba(248,113,113,.15);color:var(--red)}
+.bl-qty-disp{font-family:var(--mono);font-size:17px;font-weight:700;width:36px;text-align:center;flex-shrink:0}
+.bl-rm{background:none;border:none;color:var(--text3);font-size:24px;cursor:pointer;padding:2px 6px;flex-shrink:0}
+.bl-rm:active{color:var(--red)}
+.bl-empty-msg{padding:28px;text-align:center;color:var(--text2);font-size:14px}
+ 
+/* VALIDATE BOX */
+.validate-box{background:var(--s2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px;display:none}
+.validate-box.show{display:block}
+ 
+/* BUTTONS */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;border-radius:14px;font-size:16px;font-weight:700;font-family:var(--font);cursor:pointer;border:none;width:100%}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#6366f1);color:white}
+.btn-success{background:var(--green);color:#071a10;font-size:17px}
+.btn-ghost{background:var(--s2);border:1px solid var(--border);color:var(--text)}
+.btn-danger-soft{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);color:var(--red)}
+.btn-sm{padding:8px 14px;font-size:13px;border-radius:10px;width:auto}
+.btn-row{display:flex;gap:10px}
+.btn-row .btn{flex:1}
+ 
+/* SHEETS */
+.sheet-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.75);backdrop-filter:blur(4px)}
+.sheet-overlay.open{display:block}
+.sheet{position:fixed;bottom:0;left:0;right:0;z-index:201;background:var(--s1);border-radius:24px 24px 0 0;border-top:1px solid var(--border);max-height:94vh;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);padding-bottom:calc(24px + var(--safe-b))}
+.sheet.open{transform:translateY(0)}
+.sheet-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:14px auto 0}
+.sheet-title{font-size:20px;font-weight:800;padding:14px 20px 0}
+.sheet-body{padding:16px 20px}
+.field{margin-bottom:14px}
+.field label{font-size:11px;font-weight:700;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:7px}
+.field input,.field select{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:16px;font-family:var(--font);color:var(--text);outline:none;-webkit-appearance:none;appearance:none}
+.field input:focus,.field select:focus{border-color:var(--accent)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+ 
+/* HISTORY */
+.hist-item{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);margin:0 16px 8px;padding:12px 14px}
+.hist-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px;gap:8px}
+.hist-name{font-size:14px;font-weight:600;flex:1}
+.hist-qty{font-family:var(--mono);font-size:16px;font-weight:700;white-space:nowrap}
+.hist-qty.entree{color:var(--green)}.hist-qty.sortie{color:var(--red)}
+.hist-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.hist-date{font-size:11px;color:var(--text2);font-family:var(--mono)}
+.hist-ref{font-size:11px;color:var(--accent);background:rgba(56,189,248,.08);padding:2px 7px;border-radius:5px;font-family:var(--mono)}
+.hist-tech{font-size:11px;color:var(--text2)}
+ 
+/* ALERT */
+.alert-card{background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.22);border-radius:var(--radius);margin:0 16px 10px;padding:14px 16px}
+.alert-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.alert-name{font-size:14px;font-weight:700}
+.alert-val{font-family:var(--mono);font-size:20px;font-weight:800;color:var(--red)}
+.alert-meta{font-size:11px;color:var(--text2)}
+ 
+/* BL PRINT */
+.bl-print-preview{background:white;color:#1a1a2e;border-radius:var(--radius);padding:20px;margin-bottom:14px;display:none}
+.bl-print-preview.show{display:block}
+.bl-print-header{border-bottom:2px solid #1E2538;padding-bottom:12px;margin-bottom:14px}
+.bl-print-title{font-size:18px;font-weight:800;color:#1E2538}
+.bl-print-meta{font-size:12px;color:#64748b;margin-top:4px;line-height:1.7}
+.bl-print-table{width:100%;border-collapse:collapse;font-size:13px}
+.bl-print-table th{background:#1E2538;color:white;padding:8px 10px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.bl-print-table td{padding:8px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+.bl-print-table tr:last-child td{border-bottom:none}
+.bl-print-ref{font-family:monospace;font-size:11px;color:#3b82f6;font-weight:700}
+.bl-print-total{margin-top:12px;padding-top:12px;border-top:2px solid #1E2538;display:flex;justify-content:space-between;align-items:center}
+.bl-print-total-label{font-size:13px;font-weight:700;color:#1E2538}
+.bl-print-total-val{font-size:16px;font-weight:800;color:#1E2538}
+.bl-print-footer{margin-top:14px;padding-top:10px;border-top:1px solid #e2e8f0;font-size:11px;color:#94a3b8;display:flex;justify-content:space-between}
+ 
+.empty-state{text-align:center;padding:50px 20px;color:var(--text2)}
+.empty-icon{font-size:48px;margin-bottom:10px;opacity:.35}
+.empty-text{font-size:14px}
+ 
+/* SETTINGS */
+.settings-block{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);margin:0 16px 12px;overflow:hidden}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--border);cursor:pointer}
+.settings-row:last-child{border-bottom:none}
+.settings-label{font-size:15px;font-weight:600}
+.settings-sub{font-size:12px;color:var(--text2);margin-top:2px}
+.settings-arrow{color:var(--text3);font-size:20px}
+ 
+/* TOAST */
+#toast{position:fixed;top:calc(var(--safe-t) + 12px);left:16px;right:16px;z-index:999;background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px 18px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;transform:translateY(-120px);opacity:0;transition:all .3s cubic-bezier(.32,.72,0,1);pointer-events:none}
+#toast.show{transform:translateY(0);opacity:1}
+#toast.success{border-color:var(--green)}
+#toast.error{border-color:var(--red)}
+#toast.warn{border-color:var(--orange)}
+ 
+/* SETUP MODAL */
+.setup-overlay{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);align-items:flex-end;justify-content:center}
+.setup-overlay.open{display:flex}
+.setup-box{background:var(--s1);border-radius:24px 24px 0 0;border-top:1px solid var(--border);width:100%;padding:28px 24px calc(28px + var(--safe-b));max-height:90vh;overflow-y:auto}
+.setup-title{font-size:24px;font-weight:800;margin-bottom:8px}
+.setup-sub{font-size:15px;color:var(--text2);line-height:1.6;margin-bottom:24px}
+ 
+select option{background:var(--s2);color:var(--text)}
+</style>
+</head>
+<body>
+ 
+<!--  PAGE ACCUEIL  -->
+<div class="page active" id="page-home">
+  <div class="topbar">
+    <div class="topbar-row">
+      <div>
+        <div class="topbar-title">Stock<span>Tech</span></div>
+        <div class="topbar-sub" id="dash-date">—</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span class="site-chip" id="site-chip">—</span>
+        <button class="topbar-btn" onclick="openSheet('add','materiel')">+ Article</button>
+      </div>
+    </div>
+  </div>
+  <div class="kpi-scroll" id="kpi-zone"></div>
+  <div class="section-head"><div class="section-title"><div class="dot" style="background:var(--red)"></div>⚠ Alertes stock</div></div>
+  <div id="alerts-zone"></div>
+  <div class="section-head"><div class="section-title"><div class="dot"></div>Derniers mouvements</div></div>
+  <div id="recent-zone"></div>
+  <div style="height:8px"></div>
+</div>
+ 
+<!--  PAGE MATÉRIELS  -->
+<div class="page" id="page-mat">
+  <div class="topbar">
+    <div class="topbar-row">
+      <div><div class="topbar-title">Matériels</div><div class="topbar-sub" id="mat-sub">—</div></div>
+      <button class="topbar-btn" onclick="openSheet('add','materiel')">+ Ajouter</button>
+    </div>
+  </div>
+  <div class="search-wrap" style="padding-top:14px">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="search-mat" placeholder="Nom, référence, fournisseur…" oninput="renderList('mat')">
+  </div>
+  <div id="mat-list"></div>
+  <div style="height:8px"></div>
+</div>
+ 
+<!--  PAGE PRODUITS  -->
+<div class="page" id="page-prod">
+  <div class="topbar">
+    <div class="topbar-row">
+      <div><div class="topbar-title">Produits</div><div class="topbar-sub" id="prod-sub">—</div></div>
+      <button class="topbar-btn" onclick="openSheet('add','produit')">+ Ajouter</button>
+    </div>
+  </div>
+  <div class="search-wrap" style="padding-top:14px">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="search-prod" placeholder="Nom, référence, fournisseur…" oninput="renderList('prod')">
+  </div>
+  <div id="prod-list"></div>
+  <div style="height:8px"></div>
+</div>
+ 
+<!--  PAGE SCAN BL  -->
+<div class="page" id="page-scan">
+  <div class="topbar">
+    <div class="topbar-row">
+      <div><div class="topbar-title">Bon de livraison</div><div class="topbar-sub">QR code · Code-barres</div></div>
+    </div>
+  </div>
+  <div class="scan-container">
+    <div class="cam-box">
+      <video id="cam-video" autoplay playsinline muted></video>
+      <div class="cam-overlay">
+        <div class="cam-frame">
+          <div class="cam-corner tl"></div><div class="cam-corner tr"></div>
+          <div class="cam-corner bl"></div><div class="cam-corner br"></div>
+          <div class="cam-line"></div>
+        </div>
+      </div>
+      <div class="cam-flash" id="cam-flash"></div>
+      <div class="cam-status" id="cam-status">Appuyez sur Activer la caméra</div>
+    </div>
+    <div class="cam-btn-row">
+      <button class="btn-cam btn-start" id="btn-start" onclick="startCamera()">📷 Activer la caméra</button>
+      <button class="btn-cam btn-stop" id="btn-stop" onclick="stopCamera()" style="display:none">⏹ Arrêter</button>
+    </div>
+    <div class="type-toggle-row">
+      <button class="type-opt sel-in" id="opt-in" onclick="setScanType('entree')">⬆ Entrée stock</button>
+      <button class="type-opt" id="opt-out" onclick="setScanType('sortie')">⬇ Sortie stock</button>
+    </div>
+    <div class="manual-section">
+      <label>Saisie manuelle ou douchette Bluetooth</label>
+      <input type="text" id="manual-input" class="big-ref-input" placeholder="Référence article…" autocomplete="off">
+      <button class="btn btn-ghost" style="margin-top:10px;font-size:14px;padding:12px" onclick="processManual()">🔎 Rechercher</button>
+    </div>
+    <div class="found-card" id="found-card">
+      <div class="found-top">
+        <div>
+          <div class="found-ref" id="fc-ref"></div>
+          <div class="found-name" id="fc-name"></div>
+          <div class="found-fournisseur" id="fc-fourn"></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:11px;color:var(--text2)">Stock</div>
+          <div class="found-stock" id="fc-stock"></div>
+          <div style="font-size:11px;color:var(--purple)" id="fc-prix"></div>
+        </div>
+      </div>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="changeQty(-1)">−</button>
+        <input type="number" id="fc-qty" class="qty-input" value="1" min="1">
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+        <button class="btn-add-bl" onclick="addToBL()">➕ BL</button>
+      </div>
+    </div>
+ 
+    <!-- BL liste -->
+    <div class="bl-box">
+      <div class="bl-header">
+        <div class="bl-header-title">📋 Bon de livraison — <span id="bl-count">0 ligne</span></div>
+        <button class="btn btn-danger-soft btn-sm" onclick="clearBL()">Vider</button>
+      </div>
+      <div id="bl-inner"><div class="bl-empty-msg">Scannez des articles pour constituer le BL</div></div>
+    </div>
+ 
+    <!-- Infos BL -->
+    <div class="validate-box" id="validate-box">
+      <div class="field"><label>Technicien</label><input type="text" id="vbl-tech" placeholder="Prénom NOM" style="background:var(--s3)"></div>
+      <div class="field" style="margin-bottom:0"><label>Commentaire</label><input type="text" id="vbl-comment" placeholder="Chantier, affaire, note…" style="background:var(--s3)"></div>
+    </div>
+ 
+    <!-- Aperçu BL imprimable -->
+    <div class="bl-print-preview" id="bl-preview"></div>
+ 
+    <div id="bl-action-btns" style="display:none">
+      <button class="btn btn-success" onclick="validateBL()" style="margin-bottom:10px">✅ Valider et mettre à jour le stock</button>
+      <button class="btn btn-ghost" onclick="previewBL()" style="margin-bottom:10px">👁 Aperçu / Copier le BL</button>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+</div>
+ 
+<!--  PAGE HISTORIQUE  -->
+<div class="page" id="page-hist">
+  <div class="topbar">
+    <div class="topbar-row">
+      <div><div class="topbar-title">Historique</div><div class="topbar-sub" id="hist-sub">—</div></div>
+      <button class="topbar-btn" onclick="exportCSV()">⬇ CSV</button>
+    </div>
+  </div>
+  <div class="search-wrap" style="padding-top:14px">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="search-hist" placeholder="Référence, technicien…" oninput="renderHist()">
+  </div>
+  <div style="padding:0 16px 12px;display:flex;gap:8px">
+    <select id="filt-type" style="flex:1;background:var(--s2);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:11px;font-size:14px;font-family:var(--font);outline:none" onchange="renderHist()">
+      <option value="">Tous types</option>
+      <option value="entree">Entrées</option>
+      <option value="sortie">Sorties</option>
+    </select>
+    <input type="date" id="filt-date" style="flex:1;background:var(--s2);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:11px;font-size:14px;font-family:var(--font);outline:none" onchange="renderHist()">
+  </div>
+  <div id="hist-list"></div>
+  <div style="height:8px"></div>
+</div>
+ 
+<!--  PAGE RÉGLAGES  -->
+<div class="page" id="page-settings">
+  <div class="topbar">
+    <div class="topbar-row">
+      <div><div class="topbar-title">Réglages</div><div class="topbar-sub" id="settings-site-sub">—</div></div>
+    </div>
+  </div>
+  <div style="padding:20px 16px 8px"><div class="section-title"><div class="dot" style="background:var(--accent)"></div>Mon site</div></div>
+  <div class="settings-block">
+    <div class="settings-row" onclick="openSheet('site')">
+      <div><div class="settings-label">Nom du site &amp; technicien</div><div class="settings-sub" id="settings-site-name">—</div></div>
+      <div class="settings-arrow">›</div>
+    </div>
+  </div>
+ 
+  <div style="padding:16px 16px 8px"><div class="section-title"><div class="dot" style="background:var(--green)"></div>Import catalogue</div></div>
+  <div style="padding:0 16px 12px">
+    <div style="background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px">
+      <div style="font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:14px">Remplissez le fichier Excel fourni, enregistrez en <strong style="color:var(--text)">CSV</strong>, puis importez ici.</div>
+      <input type="file" id="csv-file-input" accept=".csv" style="display:none" onchange="importCSV(event)">
+      <button class="btn btn-primary" onclick="document.getElementById('csv-file-input').click()">📂 Importer catalogue CSV</button>
+    </div>
+    <div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--orange);line-height:1.7">
+      <strong>Étapes :</strong><br>
+      1. Remplir l'Excel (Référence, Désignation, Type, Prix HT, Fournisseur…)<br>
+      2. Fichier → Enregistrer sous → CSV point-virgule<br>
+      3. Transférer sur le téléphone<br>
+      4. Importer ici
+    </div>
+  </div>
+ 
+  <div style="padding:8px 16px 8px"><div class="section-title"><div class="dot" style="background:var(--accent)"></div>Export données</div></div>
+  <div style="padding:0 16px 12px;display:flex;flex-direction:column;gap:10px">
+    <button class="btn btn-ghost" onclick="exportCSV()">📊 Exporter l'historique (CSV Excel)</button>
+    <button class="btn btn-ghost" onclick="exportCatalogue()">📋 Exporter le catalogue (CSV Excel)</button>
+  </div>
+ 
+  <div style="padding:8px 16px 8px"><div class="section-title"><div class="dot" style="background:var(--red)"></div>Zone de danger</div></div>
+  <div style="padding:0 16px 16px">
+    <button class="btn btn-danger-soft" onclick="resetAll()">🗑 Effacer toutes les données</button>
+  </div>
+  <div style="height:8px"></div>
+</div>
+ 
+<!--  NAV  -->
+<nav class="bottom-nav">
+  <div class="nav-item active" id="nav-home" onclick="goPage('home')">
+    <div class="nav-icon">🏠</div><div class="nav-label">Accueil</div>
+    <span class="nav-badge" id="alert-badge" style="display:none">0</span>
+  </div>
+  <div class="nav-item" id="nav-mat" onclick="goPage('mat')">
+    <div class="nav-icon">🔧</div><div class="nav-label">Matériels</div>
+  </div>
+  <div class="nav-scan-btn" onclick="goPage('scan')">
+    <div class="nav-scan-circle">📷</div>
+    <div class="nav-label" style="color:var(--text2);font-size:10px;font-weight:600;margin-top:1px">BL</div>
+  </div>
+  <div class="nav-item" id="nav-prod" onclick="goPage('prod')">
+    <div class="nav-icon">🛒</div><div class="nav-label">Produits</div>
+  </div>
+  <div class="nav-item" id="nav-settings" onclick="goPage('settings')">
+    <div class="nav-icon">⚙️</div><div class="nav-label">Réglages</div>
+  </div>
+</nav>
+ 
+<!--  SHEET AJOUTER/MODIFIER  -->
+<div class="sheet-overlay" id="ov-add" onclick="closeSheet('add')"></div>
+<div class="sheet" id="sh-add">
+  <div class="sheet-handle"></div>
+  <div class="sheet-title" id="sh-add-title">Nouvel article</div>
+  <div class="sheet-body">
+    <div class="field-row">
+      <div class="field"><label>Référence *</label><input type="text" id="f-ref" placeholder="REF-001"></div>
+      <div class="field"><label>Type</label><select id="f-type"><option value="materiel">Matériel</option><option value="produit">Produit</option></select></div>
+    </div>
+    <div class="field"><label>Désignation *</label><input type="text" id="f-name" placeholder="Nom complet"></div>
+    <div class="field-row">
+      <div class="field"><label>Catégorie</label><input type="text" id="f-cat" placeholder="Électricité…"></div>
+      <div class="field"><label>Unité</label><input type="text" id="f-unit" placeholder="pce, m, kg…"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Stock initial</label><input type="number" id="f-stock" value="0" min="0"></div>
+      <div class="field"><label>Seuil alerte</label><input type="number" id="f-seuil" value="5" min="0"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Prix achat HT (€)</label><input type="number" id="f-prix" step="0.01" min="0" placeholder="0.00"></div>
+      <div class="field"><label>Fournisseur</label><input type="text" id="f-fourn" placeholder="Nom fournisseur"></div>
+    </div>
+    <div class="field"><label>Emplacement</label><input type="text" id="f-loc" placeholder="Étagère A1, Armoire 2…"></div>
+    <input type="hidden" id="f-edit">
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="closeSheet('add')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveArticle()">💾 Enregistrer</button>
+    </div>
+  </div>
+</div>
+ 
+<!--  SHEET MOUVEMENT  -->
+<div class="sheet-overlay" id="ov-mvt" onclick="closeSheet('mvt')"></div>
+<div class="sheet" id="sh-mvt">
+  <div class="sheet-handle"></div>
+  <div class="sheet-title" id="sh-mvt-title">Mouvement</div>
+  <div class="sheet-body">
+    <div style="background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:14px">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--accent)" id="mv-ref"></div>
+      <div style="font-size:17px;font-weight:700;margin-top:3px" id="mv-name"></div>
+      <div style="font-size:12px;color:var(--text2);margin-top:2px" id="mv-fourn"></div>
+      <div style="font-size:13px;color:var(--text2);margin-top:4px">Stock : <span style="font-family:var(--mono);color:var(--accent);font-weight:600" id="mv-stock"></span></div>
+    </div>
+    <div class="field"><label>Type</label>
+      <div class="type-toggle-row" style="margin-bottom:0">
+        <button class="type-opt sel-in" id="mv-opt-in" onclick="setMvtType('entree')">⬆ Entrée</button>
+        <button class="type-opt" id="mv-opt-out" onclick="setMvtType('sortie')">⬇ Sortie</button>
+      </div>
+    </div>
+    <div class="field"><label>Quantité</label>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="chMvtQty(-1)">−</button>
+        <input type="number" id="mv-qty" class="qty-input" value="1" min="1">
+        <button class="qty-btn" onclick="chMvtQty(1)">+</button>
+      </div>
+    </div>
+    <div class="field"><label>Technicien</label><input type="text" id="mv-tech" placeholder="Prénom NOM"></div>
+    <div class="field"><label>Commentaire</label><input type="text" id="mv-comment" placeholder="Chantier, affaire…"></div>
+    <input type="hidden" id="mv-ref-h">
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="closeSheet('mvt')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveMvt()">✅ Valider</button>
+    </div>
+  </div>
+</div>
+ 
+<!--  SHEET SITE  -->
+<div class="sheet-overlay" id="ov-site" onclick="closeSheet('site')"></div>
+<div class="sheet" id="sh-site">
+  <div class="sheet-handle"></div>
+  <div class="sheet-title">📍 Mon site</div>
+  <div class="sheet-body">
+    <div class="field"><label>Nom du site *</label><input type="text" id="site-name" placeholder="Ex : Site Lyon, Atelier Paris, Dépôt Nord…"></div>
+    <div class="field"><label>Nom du technicien</label><input type="text" id="site-tech" placeholder="Prénom NOM"></div>
+    <div style="background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--accent);line-height:1.6;margin-bottom:16px">
+      Ces informations apparaissent dans tous les exports CSV et bons de livraison pour identifier votre stock.
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="closeSheet('site')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveSite()">💾 Enregistrer</button>
+    </div>
+  </div>
+</div>
+ 
+<!--  SETUP PREMIER LANCEMENT  -->
+<div class="setup-overlay" id="setup-overlay">
+  <div class="setup-box">
+    <div style="font-size:40px;margin-bottom:12px">👋</div>
+    <div class="setup-title">Bienvenue sur StockTech</div>
+    <div class="setup-sub">Avant de commencer, configurez votre site. Ces informations identifieront votre stock dans tous les exports.</div>
+    <div class="field"><label>Nom du site *</label><input type="text" id="setup-site-name" placeholder="Ex : Site Lyon, Atelier Paris, Dépôt Nord…"></div>
+    <div class="field"><label>Votre nom (technicien)</label><input type="text" id="setup-tech-name" placeholder="Prénom NOM"></div>
+    <button class="btn btn-primary" onclick="saveSetup()" style="margin-top:8px">✅ Démarrer</button>
+  </div>
+</div>
+ 
+<div id="toast"><span id="t-icon">✅</span><span id="t-msg"></span></div>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zxing-js/0.20.0/zxing.min.js"></script>
+<script>
+//  DATA 
+let articles   = JSON.parse(localStorage.getItem('st_art')  || '[]');
+let mouvements = JSON.parse(localStorage.getItem('st_mvt')  || '[]');
+let config     = JSON.parse(localStorage.getItem('st_cfg')  || '{}');
+let blItems = [];
+let scanType = 'entree';
+let mvtType  = 'entree';
+let currentArt = null;
+let cameraOn = false;
+let codeReader = null;
+ 
+function save() {
+  localStorage.setItem('st_art', JSON.stringify(articles));
+  localStorage.setItem('st_mvt', JSON.stringify(mouvements));
+  localStorage.setItem('st_cfg', JSON.stringify(config));
+}
+ 
+//  STOCK 
+function getStock(ref) {
+  const a = articles.find(x => x.ref === ref);
+  if (!a) return 0;
+  const e = mouvements.filter(m => m.ref===ref && m.type==='entree').reduce((s,m)=>s+m.qty,0);
+  const o = mouvements.filter(m => m.ref===ref && m.type==='sortie').reduce((s,m)=>s+m.qty,0);
+  return (a.stockInit||0)+e-o;
+}
+function pill(s,seuil) {
+  if(s<=0) return `<span class="pill pill-low">&#x26D4; Épuisé</span>`;
+  if(s<=seuil) return `<span class="pill pill-warn">&#x26A0; Faible</span>`;
+  return `<span class="pill pill-ok">&#x2705; OK</span>`;
+}
+function bar(s,seuil) {
+  const max=Math.max(seuil*3,s,1), pct=Math.min(100,(s/max)*100);
+  const cls=s<=0?'bar-low':s<=seuil?'bar-warn':'bar-ok';
+  return `<div class="stock-bar-wrap"><div class="stock-bar-fill ${cls}" style="width:${pct}%"></div></div>`;
+}
+function sc(s,seuil){ return s<=0?'var(--red)':s<=seuil?'var(--orange)':'var(--green)'; }
+function valeurStock() {
+  return articles.reduce((tot,a) => tot + (getStock(a.ref) * (parseFloat(a.prix)||0)), 0);
+}
+function fmtEur(v){ return v.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'; }
+ 
+//  NAVIGATION 
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  const ni=document.getElementById('nav-'+name);
+  if(ni) ni.classList.add('active');
+  if(name!=='scan') stopCamera();
+  if(name==='home')     renderDash();
+  if(name==='mat')      renderList('mat');
+  if(name==='prod')     renderList('prod');
+  if(name==='hist')     renderHist();
+  if(name==='settings') renderSettings();
+  if(name==='scan')     setTimeout(()=>document.getElementById('manual-input').focus(),400);
+}
+ 
+//  SETUP PREMIER LANCEMENT 
+function checkSetup() {
+  if (!config.site) {
+    document.getElementById('setup-overlay').classList.add('open');
+  } else {
+    updateSiteChip();
+  }
+}
+function saveSetup() {
+  const sn = document.getElementById('setup-site-name').value.trim();
+  const tn = document.getElementById('setup-tech-name').value.trim();
+  if (!sn) { toast('Indiquez le nom du site', 'error'); return; }
+  config.site = sn;
+  config.tech = tn;
+  save();
+  document.getElementById('setup-overlay').classList.remove('open');
+  updateSiteChip();
+  renderDash();
+  toast('Site configuré : '+sn, 'success');
+}
+function updateSiteChip() {
+  const chip = document.getElementById('site-chip');
+  if(chip) chip.textContent = config.site || '—';
+  const sub = document.getElementById('settings-site-sub');
+  if(sub) sub.textContent = (config.site||'—') + (config.tech?' · '+config.tech:'');
+  const sn = document.getElementById('settings-site-name');
+  if(sn) sn.textContent = (config.site||'Non configuré') + (config.tech?' — '+config.tech:'');
+}
+ 
+//  DASHBOARD 
+function renderDash() {
+  const d=new Date();
+  document.getElementById('dash-date').textContent=d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+  const mats=articles.filter(a=>a.type==='materiel').length;
+  const prods=articles.filter(a=>a.type==='produit').length;
+  const alts=articles.filter(a=>getStock(a.ref)<=a.seuil);
+  const today=d.toDateString();
+  const todayN=mouvements.filter(m=>new Date(m.date).toDateString()===today).length;
+  const valTot=valeurStock();
+ 
+  const badge=document.getElementById('alert-badge');
+  badge.style.display=alts.length?'block':'none';
+  badge.textContent=alts.length;
+ 
+  document.getElementById('kpi-zone').innerHTML=`
+    <div class="kpi-card kpi-blue"><div class="kpi-label">Matériels</div><div class="kpi-val">${mats}</div><div class="kpi-sub">Références</div></div>
+    <div class="kpi-card kpi-green"><div class="kpi-label">Produits</div><div class="kpi-val">${prods}</div><div class="kpi-sub">Références</div></div>
+    <div class="kpi-card kpi-red"><div class="kpi-label">Alertes</div><div class="kpi-val">${alts.length}</div><div class="kpi-sub">Stock faible</div></div>
+    <div class="kpi-card kpi-orange"><div class="kpi-label">Aujourd'hui</div><div class="kpi-val">${todayN}</div><div class="kpi-sub">Mouvements</div></div>
+    <div class="kpi-card kpi-purple"><div class="kpi-label">Valeur stock</div><div class="kpi-val" style="font-size:20px;margin-top:4px">${fmtEur(valTot)}</div><div class="kpi-sub">Total HT</div></div>`;
+ 
+  const az=document.getElementById('alerts-zone');
+  az.innerHTML=alts.length ? alts.map(a=>{const s=getStock(a.ref);return`
+    <div class="alert-card">
+      <div class="alert-top"><div class="alert-name">${a.name}</div><div class="alert-val">${s} ${a.unit}</div></div>
+      <div class="alert-meta">${a.ref} · ${a.cat||'—'} · Seuil : ${a.seuil}${a.fourn?' · &#x1F4E6; '+a.fourn:''}</div>
+    </div>`;}).join('') : `<div class="empty-state"><div class="empty-icon">&#x2705;</div><div class="empty-text">Tous les stocks sont au-dessus du seuil</div></div>`;
+ 
+  const rec=[...mouvements].reverse().slice(0,6);
+  document.getElementById('recent-zone').innerHTML=rec.length ? rec.map(m=>{
+    const a=articles.find(x=>x.ref===m.ref);
+    const dt=new Date(m.date);
+    return`<div class="hist-item">
+      <div class="hist-top"><div class="hist-name">${a?a.name:m.ref}<br><span style="font-family:var(--mono);font-size:10px;color:var(--text3)">${m.ref}</span></div>
+      <div class="hist-qty ${m.type}">${m.type==='entree'?'+':'-'}${m.qty} ${a?a.unit:''}</div></div>
+      <div class="hist-meta"><span class="hist-date">${dt.toLocaleDateString('fr-FR')} ${dt.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}</span>
+      ${m.tech?`<span class="hist-tech">&#x1F464; ${m.tech}</span>`:''}</div></div>`;
+  }).join('') : `<div class="empty-state"><div class="empty-icon">&#x1F4CB;</div><div class="empty-text">Aucun mouvement</div></div>`;
+}
+ 
+//  LISTES 
+function renderList(type) {
+  const isM=type==='mat', atype=isM?'materiel':'produit';
+  const q=(document.getElementById('search-'+type)?.value||'').toLowerCase();
+  const list=articles.filter(a=>a.type===atype&&(!q||a.ref.toLowerCase().includes(q)||a.name.toLowerCase().includes(q)||(a.cat||'').toLowerCase().includes(q)||(a.fourn||'').toLowerCase().includes(q)));
+  document.getElementById(type+'-sub').textContent=list.length+' article'+(list.length!==1?'s':'');
+  const el=document.getElementById(type+'-list');
+  if(!list.length){el.innerHTML=`<div class="empty-state"><div class="empty-icon">${isM?'&#x1F527;':'&#x1F6D2;'}</div><div class="empty-text">Aucun article trouvé</div></div>`;return;}
+  el.innerHTML=list.map(a=>{
+    const s=getStock(a.ref);
+    const valeur=s*(parseFloat(a.prix)||0);
+    return`<div class="article-card">
+      <div class="ac-top"><div style="flex:1">
+        <div style="display:flex;gap:6px;align-items:center;margin-bottom:5px"><span class="ac-ref">${a.ref}</span><span class="ac-cat">${a.cat||'—'}</span></div>
+        <div class="ac-name">${a.name}</div>
+      </div>${pill(s,a.seuil)}</div>
+      <div class="ac-meta">
+        ${a.fourn?`<span>&#x1F4E6; ${a.fourn}</span>`:''}
+        ${a.prix?`<span style="color:var(--purple)">&#x1F4B6; ${parseFloat(a.prix).toFixed(2)} €/u · val. ${fmtEur(valeur)}</span>`:''}
+        ${a.loc?`<span>&#x1F4CD; ${a.loc}</span>`:''}
+      </div>
+      <div class="ac-bottom">${bar(s,a.seuil)}<span class="ac-stock" style="color:${sc(s,a.seuil)}">${s} ${a.unit}</span></div>
+      <div class="ac-btns">
+        <button class="btn-in" onclick="openMvt('${a.ref}','entree')">+ Entrée</button>
+        <button class="btn-out" onclick="openMvt('${a.ref}','sortie')">− Sortie</button>
+        <button class="btn-edit-sm" onclick="openEdit('${a.ref}')">✏️</button>
+        <button class="btn-edit-sm" onclick="delArt('${a.ref}')" style="color:var(--red)">&#x1F5D1;</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+ 
+//  HISTORIQUE 
+function renderHist() {
+  const q=(document.getElementById('search-hist')?.value||'').toLowerCase();
+  const tp=document.getElementById('filt-type')?.value||'';
+  const dt=document.getElementById('filt-date')?.value||'';
+  let list=[...mouvements].reverse();
+  if(q) list=list.filter(m=>{const a=articles.find(x=>x.ref===m.ref);return m.ref.toLowerCase().includes(q)||(a&&a.name.toLowerCase().includes(q))||(m.tech||'').toLowerCase().includes(q);});
+  if(tp) list=list.filter(m=>m.type===tp);
+  if(dt) list=list.filter(m=>new Date(m.date).toISOString().startsWith(dt));
+  document.getElementById('hist-sub').textContent=list.length+' mouvement'+(list.length!==1?'s':'');
+  const el=document.getElementById('hist-list');
+  if(!list.length){el.innerHTML=`<div class="empty-state"><div class="empty-icon">&#x1F4DC;</div><div class="empty-text">Aucun mouvement</div></div>`;return;}
+  el.innerHTML=list.map(m=>{
+    const a=articles.find(x=>x.ref===m.ref);
+    const d=new Date(m.date);
+    return`<div class="hist-item">
+      <div class="hist-top">
+        <div class="hist-name">${a?a.name:m.ref}<br><span style="font-size:10px;font-family:var(--mono);color:var(--text3)">${m.ref}</span></div>
+        <div class="hist-qty ${m.type}">${m.type==='entree'?'&#x2B06;':'&#x2B07;'} ${m.qty} ${a?a.unit:''}</div>
+      </div>
+      <div class="hist-meta">
+        <span class="hist-date">${d.toLocaleDateString('fr-FR')} ${d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}</span>
+        ${m.tech?`<span class="hist-tech">&#x1F464; ${m.tech}</span>`:''}
+        ${m.comment?`<span class="hist-tech">&#x1F4AC; ${m.comment}</span>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+ 
+//  RÉGLAGES 
+function renderSettings() { updateSiteChip(); }
+ 
+//  SHEETS 
+function openSheet(id, extra) {
+  if(id==='add'){
+    document.getElementById('sh-add-title').textContent=extra==='materiel'?'&#x1F527; Nouveau matériel':'&#x1F6D2; Nouveau produit';
+    ['f-ref','f-name','f-cat','f-loc','f-fourn'].forEach(i=>document.getElementById(i).value='');
+    document.getElementById('f-stock').value=0; document.getElementById('f-seuil').value=5;
+    document.getElementById('f-unit').value='pce'; document.getElementById('f-prix').value='';
+    document.getElementById('f-type').value=extra||'materiel'; document.getElementById('f-edit').value='';
+  }
+  if(id==='site'){
+    document.getElementById('site-name').value=config.site||'';
+    document.getElementById('site-tech').value=config.tech||'';
+  }
+  document.getElementById('ov-'+id).classList.add('open');
+  document.getElementById('sh-'+id).classList.add('open');
+}
+function closeSheet(id){
+  document.getElementById('ov-'+id).classList.remove('open');
+  document.getElementById('sh-'+id).classList.remove('open');
+}
+function saveSite(){
+  const sn=document.getElementById('site-name').value.trim();
+  if(!sn){toast('Nom du site obligatoire','error');return;}
+  config.site=sn; config.tech=document.getElementById('site-tech').value.trim();
+  save(); closeSheet('site'); updateSiteChip(); toast('Site mis à jour &#x2705;');
+}
+function openEdit(ref){
+  const a=articles.find(x=>x.ref===ref); if(!a) return;
+  document.getElementById('sh-add-title').textContent='✏️ Modifier';
+  document.getElementById('f-ref').value=a.ref;
+  document.getElementById('f-name').value=a.name;
+  document.getElementById('f-type').value=a.type;
+  document.getElementById('f-cat').value=a.cat||'';
+  document.getElementById('f-unit').value=a.unit;
+  document.getElementById('f-stock').value=a.stockInit;
+  document.getElementById('f-seuil').value=a.seuil;
+  document.getElementById('f-prix').value=a.prix||'';
+  document.getElementById('f-fourn').value=a.fourn||'';
+  document.getElementById('f-loc').value=a.loc||'';
+  document.getElementById('f-edit').value=a.ref;
+  document.getElementById('ov-add').classList.add('open');
+  document.getElementById('sh-add').classList.add('open');
+}
+function openMvt(ref,type){
+  const a=articles.find(x=>x.ref===ref); if(!a) return;
+  document.getElementById('mv-ref').textContent=a.ref;
+  document.getElementById('mv-name').textContent=a.name;
+  document.getElementById('mv-fourn').textContent=a.fourn?'&#x1F4E6; '+a.fourn:'';
+  document.getElementById('mv-stock').textContent=getStock(ref)+' '+a.unit;
+  document.getElementById('mv-ref-h').value=ref;
+  document.getElementById('mv-qty').value=1;
+  document.getElementById('mv-tech').value=config.tech||'';
+  document.getElementById('mv-comment').value='';
+  setMvtType(type||'entree');
+  document.getElementById('sh-mvt-title').textContent=a.name;
+  document.getElementById('ov-mvt').classList.add('open');
+  document.getElementById('sh-mvt').classList.add('open');
+}
+function setMvtType(t){
+  mvtType=t;
+  document.getElementById('mv-opt-in').className='type-opt'+(t==='entree'?' sel-in':'');
+  document.getElementById('mv-opt-out').className='type-opt'+(t==='sortie'?' sel-out':'');
+}
+function chMvtQty(d){const e=document.getElementById('mv-qty');e.value=Math.max(1,(parseInt(e.value)||1)+d);}
+ 
+//  SAVE ARTICLE 
+function saveArticle(){
+  const ref=document.getElementById('f-ref').value.trim();
+  const name=document.getElementById('f-name').value.trim();
+  if(!ref||!name){toast('Référence et désignation requises','error');return;}
+  const editRef=document.getElementById('f-edit').value;
+  const art={ref,name,type:document.getElementById('f-type').value,
+    cat:document.getElementById('f-cat').value.trim(),
+    stockInit:parseInt(document.getElementById('f-stock').value)||0,
+    unit:document.getElementById('f-unit').value.trim()||'pce',
+    seuil:parseInt(document.getElementById('f-seuil').value)||0,
+    prix:parseFloat(document.getElementById('f-prix').value)||null,
+    fourn:document.getElementById('f-fourn').value.trim(),
+    loc:document.getElementById('f-loc').value.trim(),
+    created:new Date().toISOString()};
+  if(editRef){const i=articles.findIndex(a=>a.ref===editRef);if(i>=0)articles[i]=art;else articles.push(art);toast('Modifié &#x2705;');}
+  else{if(articles.find(a=>a.ref===ref)){toast('Référence déjà utilisée','error');return;}articles.push(art);toast('Ajouté &#x2705;');}
+  save(); closeSheet('add');
+  renderList(art.type==='materiel'?'mat':'prod'); renderDash();
+}
+ 
+//  SAVE MOUVEMENT 
+function saveMvt(){
+  const ref=document.getElementById('mv-ref-h').value;
+  const qty=parseInt(document.getElementById('mv-qty').value)||0;
+  if(!ref||qty<1){toast('Quantité invalide','error');return;}
+  const a=articles.find(x=>x.ref===ref);
+  if(mvtType==='sortie'&&qty>getStock(ref)){toast(`Stock insuffisant (${getStock(ref)} ${a?.unit||''} dispo)`,'error');return;}
+  mouvements.push({ref,qty,type:mvtType,date:new Date().toISOString(),
+    tech:document.getElementById('mv-tech').value.trim(),
+    comment:document.getElementById('mv-comment').value.trim()});
+  save(); closeSheet('mvt');
+  toast(`${mvtType==='entree'?'Entrée':'Sortie'} enregistrée &#x2705;`,'success');
+  renderList(a?.type==='materiel'?'mat':'prod'); renderDash();
+}
+ 
+//  DELETE 
+function delArt(ref){
+  if(!confirm('Supprimer cet article ?'))return;
+  const a=articles.find(x=>x.ref===ref);
+  articles=articles.filter(x=>x.ref!==ref); save();
+  renderList(a?.type==='materiel'?'mat':'prod'); renderDash(); toast('Supprimé');
+}
+ 
+//  CAMERA 
+let scanLoop = null;
+let scanCanvas = null;
+let scanCtx = null;
+ 
+async function startCamera(){
+  if(cameraOn)return;
+  document.getElementById('cam-status').textContent='Initialisation...';
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}}
+    });
+    const video=document.getElementById('cam-video');
+    video.srcObject=stream;
+    await new Promise(r=>{video.onloadedmetadata=r;});
+    video.play();
+    cameraOn=true;
+    document.getElementById('btn-start').style.display='none';
+    document.getElementById('btn-stop').style.display='block';
+ 
+    // Prepare canvas for frame capture
+    scanCanvas=document.createElement('canvas');
+    scanCtx=scanCanvas.getContext('2d',{willReadFrequently:true});
+ 
+    // Try native BarcodeDetector first (Chrome Android 83+, Samsung Internet)
+    if('BarcodeDetector' in window){
+      document.getElementById('cam-status').textContent='Scan actif - Pointez vers le QR code';
+      const detector=new BarcodeDetector({formats:['qr_code','code_128','code_39','ean_13','ean_8','data_matrix','itf','codabar']});
+      const detect=async()=>{
+        if(!cameraOn)return;
+        if(video.readyState===video.HAVE_ENOUGH_DATA){
+          try{
+            const codes=await detector.detect(video);
+            if(codes.length>0){
+              onCode(codes[0].rawValue);
+              return;
+            }
+          }catch(e){}
+        }
+        scanLoop=requestAnimationFrame(detect);
+      };
+      scanLoop=requestAnimationFrame(detect);
+    } else {
+      // Fallback: ZXing on canvas frames
+      document.getElementById('cam-status').textContent='Scan actif - Pointez vers le QR code';
+      if(typeof ZXing!=='undefined'){
+        const hints=new Map();
+        hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS,[
+          ZXing.BarcodeFormat.QR_CODE,ZXing.BarcodeFormat.CODE_128,
+          ZXing.BarcodeFormat.CODE_39,ZXing.BarcodeFormat.EAN_13,
+          ZXing.BarcodeFormat.EAN_8]);
+        hints.set(ZXing.DecodeHintType.TRY_HARDER,true);
+        const reader=new ZXing.BrowserMultiFormatReader(hints);
+        codeReader=reader;
+        const detect=()=>{
+          if(!cameraOn)return;
+          if(video.readyState===video.HAVE_ENOUGH_DATA){
+            scanCanvas.width=video.videoWidth;
+            scanCanvas.height=video.videoHeight;
+            scanCtx.drawImage(video,0,0);
+            const imgData=scanCtx.getImageData(0,0,scanCanvas.width,scanCanvas.height);
+            const luminance=new ZXing.RGBLuminanceSource(imgData.data,scanCanvas.width,scanCanvas.height);
+            const bmp=new ZXing.BinaryBitmap(new ZXing.HybridBinarizer(luminance));
+            try{
+              const result=reader.decodeBitmap(bmp);
+              if(result) onCode(result.getText());
+            }catch(e){}
           }
-        ]
-      }</script><script nonce="NoC7yxQa0m+8xaS+E1nQCQ==">!function(){try{performance.mark?.("rq_cache:preload_start");const e="keyval-store",o="keyval",r="react-query-cache",t=new Promise(t=>{if(!window.indexedDB)return void t(void 0);const c=indexedDB.open(e);c.onupgradeneeded=()=>{c.transaction?.abort()},c.onerror=()=>t(void 0),c.onsuccess=()=>{const a=c.result;if(!a.objectStoreNames.contains(o))return a.close(),indexedDB.deleteDatabase(e),void t(void 0);try{const e=a.transaction(o,"readonly").objectStore(o).get(r);e.onerror=()=>{a.close(),t(void 0)},e.onsuccess=()=>{a.close(),window.__PRELOADED_IDB_CACHE_RESULT__=e.result,t(e.result)}}catch{a.close(),t(void 0)}}});window.__PRELOADED_IDB_CACHE__=t,performance.measure?.("rq_cache:preload_exec",{start:"rq_cache:preload_start"})}catch{}}()</script><script type="module" crossorigin src="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/index-DcrCrePJ.js"></script><link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/vendor-Vyn28asx.js"><link rel="modulepreload" crossorigin href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/tree-sitter-CxtuNIRw.js"><link rel="stylesheet" crossorigin href="https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/c6a992d55-MdCYKnmO.css"></head><body class="bg-bg-100 text-text-100 font-ui min-h-screen"><div id="root"></div><script nonce="NoC7yxQa0m+8xaS+E1nQCQ==">(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.nonce='NoC7yxQa0m+8xaS+E1nQCQ==';d.innerHTML="window.__CF$cv$params={r:'9e0dd5fc3b9a9e6f',t:'MTc3NDI3MzEwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='NoC7yxQa0m+8xaS+E1nQCQ==';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body></html>
+          scanLoop=requestAnimationFrame(detect);
+        };
+        scanLoop=requestAnimationFrame(detect);
+      } else {
+        document.getElementById('cam-status').textContent='Camera active - Utilisez la saisie manuelle';
+        toast('Scan non disponible sur ce navigateur - saisie manuelle','warn');
+      }
+    }
+  }catch(e){
+    document.getElementById('cam-status').textContent='Camera non autorisee';
+    toast('Autorisez la camera dans les parametres Chrome','error');
+  }
+}
+ 
+function stopCamera(){
+  if(!cameraOn)return;
+  if(scanLoop){cancelAnimationFrame(scanLoop);scanLoop=null;}
+  try{
+    if(codeReader){codeReader.reset();codeReader=null;}
+    const v=document.getElementById('cam-video');
+    if(v.srcObject){v.srcObject.getTracks().forEach(t=>t.stop());v.srcObject=null;}
+  }catch(e){}
+  cameraOn=false;
+  document.getElementById('btn-start').style.display='block';
+  document.getElementById('btn-stop').style.display='none';
+  document.getElementById('cam-status').textContent='Appuyez sur Activer la camera';
+}
+function onCode(code){
+  const fl=document.getElementById('cam-flash');fl.classList.add('flash');setTimeout(()=>fl.classList.remove('flash'),120);
+  if(navigator.vibrate)navigator.vibrate(60);
+  findArt(code.trim());
+}
+function setScanType(t){
+  scanType=t;
+  document.getElementById('opt-in').className='type-opt'+(t==='entree'?' sel-in':'');
+  document.getElementById('opt-out').className='type-opt'+(t==='sortie'?' sel-out':'');
+}
+function processManual(){const v=document.getElementById('manual-input').value.trim();if(v)findArt(v);}
+document.getElementById('manual-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();processManual();}});
+ 
+function findArt(code){
+  const a=articles.find(x=>x.ref.toLowerCase()===code.toLowerCase()||x.name.toLowerCase()===code.toLowerCase());
+  document.getElementById('manual-input').value=code;
+  if(!a){toast('Référence introuvable : '+code,'error');document.getElementById('found-card').classList.remove('show');return;}
+  currentArt=a;
+  const s=getStock(a.ref);
+  document.getElementById('fc-ref').textContent=a.ref;
+  document.getElementById('fc-name').textContent=a.name;
+  document.getElementById('fc-fourn').textContent=a.fourn?'&#x1F4E6; '+a.fourn:'';
+  document.getElementById('fc-stock').textContent=s+' '+a.unit;
+  document.getElementById('fc-prix').textContent=a.prix?'&#x1F4B6; '+parseFloat(a.prix).toFixed(2)+' €/u':'';
+  document.getElementById('fc-qty').value=1;
+  document.getElementById('found-card').classList.add('show');
+  toast('&#x2705; '+a.name,'success');
+}
+function changeQty(d){const e=document.getElementById('fc-qty');e.value=Math.max(1,(parseInt(e.value)||1)+d);}
+ 
+function addToBL(){
+  if(!currentArt)return;
+  const qty=parseInt(document.getElementById('fc-qty').value)||1;
+  const ex=blItems.findIndex(i=>i.ref===currentArt.ref&&i.type===scanType);
+  if(ex>=0)blItems[ex].qty+=qty;
+  else blItems.push({ref:currentArt.ref,name:currentArt.name,qty,type:scanType,unit:currentArt.unit,fourn:currentArt.fourn||'',prix:currentArt.prix||null});
+  document.getElementById('found-card').classList.remove('show');
+  document.getElementById('manual-input').value='';
+  currentArt=null; renderBL();
+  toast('Ajouté au BL &#x2705;','success');
+  if(navigator.vibrate)navigator.vibrate([60,30,60]);
+}
+ 
+function renderBL(){
+  const inner=document.getElementById('bl-inner');
+  const count=document.getElementById('bl-count');
+  const vbox=document.getElementById('validate-box');
+  const abtns=document.getElementById('bl-action-btns');
+  const preview=document.getElementById('bl-preview');
+  count.textContent=blItems.length+' ligne'+(blItems.length!==1?'s':'');
+  if(!blItems.length){
+    inner.innerHTML='<div class="bl-empty-msg">Scannez des articles pour constituer le BL</div>';
+    vbox.classList.remove('show'); abtns.style.display='none';
+    preview.classList.remove('show'); preview.innerHTML='';
+    return;
+  }
+  vbox.classList.add('show'); abtns.style.display='flex'; abtns.style.flexDirection='column';
+  inner.innerHTML=blItems.map((item,i)=>`
+    <div class="bl-item">
+      <div class="bl-info">
+        <div class="bl-item-ref">${item.ref}</div>
+        <div class="bl-item-name">${item.name}</div>
+        ${item.fourn?`<div class="bl-item-fourn">&#x1F4E6; ${item.fourn}</div>`:''}
+      </div>
+      <span class="bl-badge ${item.type==='entree'?'bl-badge-in':'bl-badge-out'}">${item.type==='entree'?'&#x2B06;':'&#x2B07;'}</span>
+      <div class="bl-qty-disp">${item.qty}</div>
+      <button class="bl-rm" onclick="rmBL(${i})">×</button>
+    </div>`).join('');
+}
+ 
+function rmBL(i){blItems.splice(i,1);renderBL();}
+function clearBL(){if(!confirm('Vider le BL ?'))return;blItems=[];renderBL();}
+ 
+//  APERÇU / COPIE BL 
+function previewBL(){
+  if(!blItems.length)return;
+  const tech=document.getElementById('vbl-tech').value.trim()||config.tech||'—';
+  const comment=document.getElementById('vbl-comment').value.trim();
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'})+' à '+now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+ 
+  const totalHT=blItems.reduce((s,i)=>s+(i.prix?i.qty*parseFloat(i.prix):0),0);
+  const hasPrix=blItems.some(i=>i.prix);
+ 
+  const rows=blItems.map(item=>`
+    <tr>
+      <td><span class="bl-print-ref">${item.ref}</span></td>
+      <td>${item.name}${item.fourn?`<br><span style="font-size:11px;color:#64748b">&#x1F4E6; ${item.fourn}</span>`:''}</td>
+      <td style="text-align:center">${item.type==='entree'?'&#x2B06; Entrée':'&#x2B07; Sortie'}</td>
+      <td style="text-align:center;font-weight:700">${item.qty} ${item.unit}</td>
+      ${hasPrix?`<td style="text-align:right">${item.prix?(item.qty*parseFloat(item.prix)).toLocaleString('fr-FR',{minimumFractionDigits:2})+'  €':'—'}</td>`:''}
+    </tr>`).join('');
+ 
+  const preview=document.getElementById('bl-preview');
+  preview.innerHTML=`
+    <div class="bl-print-header">
+      <div class="bl-print-title">&#x1F4CB; Bon de Livraison</div>
+      <div class="bl-print-meta">
+        <strong>Site :</strong> ${config.site||'—'}<br>
+        <strong>Technicien :</strong> ${tech}<br>
+        <strong>Date :</strong> ${dateStr}<br>
+        ${comment?`<strong>Commentaire :</strong> ${comment}`:''}
+      </div>
+    </div>
+    <table class="bl-print-table">
+      <thead><tr>
+        <th>Référence</th><th>Désignation</th><th>Type</th><th>Quantité</th>
+        ${hasPrix?'<th style="text-align:right">Montant HT</th>':''}
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    ${hasPrix&&totalHT>0?`<div class="bl-print-total"><div class="bl-print-total-label">Total HT</div><div class="bl-print-total-val">${fmtEur(totalHT)}</div></div>`:''}
+    <div class="bl-print-footer">
+      <span>StockTech — ${config.site||''}</span>
+      <span>${dateStr}</span>
+    </div>`;
+  preview.classList.add('show');
+ 
+  // Copie texte pour WhatsApp / email
+  let txt=`&#x1F4CB; BON DE LIVRAISON\n`;
+  txt+=`Site : ${config.site||'—'}\nTechnicien : ${tech}\nDate : ${dateStr}\n`;
+  if(comment) txt+=`Note : ${comment}\n`;
+  txt+=`${'─'.repeat(40)}\n`;
+  blItems.forEach(i=>{
+    txt+=`${i.type==='entree'?'&#x2B06;':'&#x2B07;'} [${i.ref}] ${i.name}`;
+    if(i.fourn) txt+=` (${i.fourn})`;
+    txt+=` — ${i.qty} ${i.unit}`;
+    if(i.prix) txt+=` — ${(i.qty*parseFloat(i.prix)).toFixed(2)} €`;
+    txt+='\n';
+  });
+  if(hasPrix&&totalHT>0) txt+=`${'─'.repeat(40)}\nTotal HT : ${fmtEur(totalHT)}\n`;
+ 
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(()=>toast('BL copié dans le presse-papiers &#x1F4CB;','success'));
+  } else {
+    // Fallback
+    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');document.body.removeChild(ta);
+    toast('BL copié &#x2705;','success');
+  }
+  preview.scrollIntoView({behavior:'smooth'});
+}
+ 
+function validateBL(){
+  if(!blItems.length){toast('BL vide','error');return;}
+  for(const item of blItems){
+    if(item.type==='sortie'){const s=getStock(item.ref);if(item.qty>s){const a=articles.find(x=>x.ref===item.ref);toast(`Stock insuffisant : ${a?.name||item.ref} (${s} dispo)`,'error');return;}}
+  }
+  const tech=document.getElementById('vbl-tech').value.trim()||config.tech||'';
+  const comment=document.getElementById('vbl-comment').value.trim();
+  blItems.forEach(item=>mouvements.push({ref:item.ref,qty:item.qty,type:item.type,date:new Date().toISOString(),tech,comment}));
+  save();
+  const nb=blItems.length; blItems=[]; renderBL();
+  document.getElementById('vbl-tech').value=''; document.getElementById('vbl-comment').value='';
+  document.getElementById('bl-preview').classList.remove('show'); document.getElementById('bl-preview').innerHTML='';
+  toast(`${nb} mouvement(s) enregistré(s) &#x2705;`,'success');
+  if(navigator.vibrate)navigator.vibrate([100,50,100,50,200]);
+  renderDash();
+}
+ 
+//  IMPORT CSV 
+function importCSV(event){
+  const file=event.target.files[0]; if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      const text=e.target.result;
+      const sep=text.indexOf(';')!==-1?';':',';
+      const lines=text.split(/\r?\n/).filter(l=>l.trim());
+      if(lines.length<2){toast('Fichier CSV vide','error');return;}
+      let hi=0;
+      for(let i=0;i<Math.min(5,lines.length);i++){
+        if(lines[i].toLowerCase().includes('f') && lines[i].toLowerCase().includes('rence')){hi=i;break;}
+      }
+      const headers=lines[hi].split(sep).map(h=>h.replace(/["\uFEFF]/g,'').trim().toLowerCase());
+      const ci=(kws)=>headers.findIndex(h=>kws.some(k=>h.includes(k)));
+      const colRef  =ci(['référence','reference','ref']);
+      const colName =ci(['désignation','designation','nom']);
+      const colType =ci(['type']);
+      const colCat  =ci(['catég','categ']);
+      const colUnit =ci(['unit']);
+      const colStock=ci(['stock init','initial']);
+      const colSeuil=ci(['seuil']);
+      const colPrix =ci(['prix','price','tarif']);
+      const colFourn=ci(['fournisseur','supplier','fourn']);
+      const colLoc  =ci(['empla','loc']);
+      if(colRef<0||colName<0){toast('Colonnes Référence/Désignation introuvables','error');return;}
+      function pc(row,idx){if(idx<0||idx>=row.length)return '';return row[idx].replace(/^"|"$/g,'').trim();}
+      let added=0,updated=0;
+      for(let i=hi+1;i<lines.length;i++){
+        const raw=lines[i]; if(!raw.trim())continue;
+        const row=raw.split(sep);
+        const ref=pc(row,colRef); const name=pc(row,colName);
+        if(!ref||!name)continue;
+        const art={ref,name,
+          type:(pc(row,colType).toLowerCase()==='produit')?'produit':'materiel',
+          cat:colCat>=0?pc(row,colCat):'',
+          unit:colUnit>=0?pc(row,colUnit)||'pce':'pce',
+          stockInit:colStock>=0?parseInt(pc(row,colStock))||0:0,
+          seuil:colSeuil>=0?parseInt(pc(row,colSeuil))||5:5,
+          prix:colPrix>=0?parseFloat(pc(row,colPrix).replace(',','.'))||null:null,
+          fourn:colFourn>=0?pc(row,colFourn):'',
+          loc:colLoc>=0?pc(row,colLoc):'',
+          created:new Date().toISOString()};
+        const ex=articles.findIndex(a=>a.ref===ref);
+        if(ex>=0){articles[ex]=art;updated++;}else{articles.push(art);added++;}
+      }
+      save(); event.target.value='';
+      toast(`Import : ${added} ajouté(s), ${updated} mis à jour`,'success');
+      renderDash();
+    }catch(err){toast('Erreur CSV : '+err.message,'error');}
+  };
+  reader.readAsText(file,'UTF-8');
+}
+ 
+//  EXPORTS CSV 
+function exportCSV(){
+  if(!mouvements.length){toast('Aucun mouvement','warn');return;}
+  const site=config.site||'';
+  const rows=[['Site','Date','Heure','Référence','Désignation','Catégorie','Fournisseur','Type','Quantité','Unité','Prix unit. HT','Montant HT','Stock après','Technicien','Commentaire']];
+  const stockMap={};articles.forEach(a=>{stockMap[a.ref]=a.stockInit||0;});
+  [...mouvements].sort((a,b)=>new Date(a.date)-new Date(b.date)).forEach(m=>{
+    const a=articles.find(x=>x.ref===m.ref);
+    stockMap[m.ref]=(stockMap[m.ref]||0)+(m.type==='entree'?m.qty:-m.qty);
+    const d=new Date(m.date);
+    const prix=a?.prix||''; const mt=prix?m.qty*parseFloat(prix):'';
+    rows.push([site,d.toLocaleDateString('fr-FR'),d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
+      m.ref,a?a.name:'',a?a.cat||'':'',a?a.fourn||'':'',
+      m.type==='entree'?'Entrée':'Sortie',m.qty,a?a.unit:'',
+      prix?parseFloat(prix).toFixed(2):'',mt?mt.toFixed(2):'',
+      stockMap[m.ref],m.tech||'',m.comment||'']);
+  });
+  dl(rows,'mouvements-'+config.site+'-'+new Date().toISOString().slice(0,10)+'.csv');
+  toast('Export mouvements téléchargé &#x2705;');
+}
+function exportCatalogue(){
+  if(!articles.length){toast('Aucun article','warn');return;}
+  const rows=[['Site','Référence','Désignation','Type','Catégorie','Unité','Stock initial','Seuil','Prix HT','Fournisseur','Emplacement','Stock actuel','Valeur stock HT']];
+  articles.forEach(a=>{const s=getStock(a.ref);rows.push([config.site||'',a.ref,a.name,a.type,a.cat||'',a.unit,a.stockInit,a.seuil,a.prix?parseFloat(a.prix).toFixed(2):'',a.fourn||'',a.loc||'',s,a.prix?(s*parseFloat(a.prix)).toFixed(2):'']);});
+  dl(rows,'catalogue-'+config.site+'-'+new Date().toISOString().slice(0,10)+'.csv');
+  toast('Export catalogue téléchargé &#x2705;');
+}
+function dl(rows,filename){
+  const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(';')).join('\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=filename;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+function resetAll(){
+  if(!confirm('&#x26A0; Effacer TOUTES les données ?\n\nCette action est irréversible.'))return;
+  articles=[];mouvements=[];blItems=[];save();renderDash();toast('Données effacées');
+}
+ 
+//  TOAST 
+let toastT;
+function toast(msg,type='success'){
+  const el=document.getElementById('toast');
+  document.getElementById('t-msg').textContent=msg;
+  document.getElementById('t-icon').textContent=type==='error'?'&#x26A0;️':type==='warn'?'&#x26A0;':'&#x2705;';
+  el.className='show '+type;clearTimeout(toastT);toastT=setTimeout(()=>el.className='',3200);
+}
+ 
+//  DEMO DATA 
+function loadDemo(){
+  if(articles.length>0)return;
+  // Catalogue pre-charge - pas besoin d'importer un CSV
+  articles=[
+    {ref:'MAT-001',name:'ALESE 80/200',type:'produit',cat:'Literie',unit:'pce',stockInit:0,seuil:5,prix:8.50,fourn:'EASYTEX',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-002',name:'ALESE 140/200',type:'produit',cat:'Literie',unit:'pce',stockInit:0,seuil:5,prix:11.50,fourn:'EASYTEX',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-003',name:'RIDEAU DE DOUCHE 180/200',type:'produit',cat:'Salle de bain',unit:'pce',stockInit:0,seuil:5,prix:6.60,fourn:'EASYTEX',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-004',name:'FRIGO',type:'materiel',cat:'Electromenager',unit:'pce',stockInit:0,seuil:1,prix:169.00,fourn:'G3 CONCEPT',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-005',name:'PLAQUE VITROCERAMIQUE',type:'materiel',cat:'Electromenager',unit:'pce',stockInit:0,seuil:1,prix:81.04,fourn:'G3 CONCEPT',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-006',name:'MICRO ONDE',type:'materiel',cat:'Electromenager',unit:'pce',stockInit:0,seuil:1,prix:69.00,fourn:'G3 CONCEPT',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-007',name:'CHAISE',type:'materiel',cat:'Mobilier',unit:'pce',stockInit:0,seuil:2,prix:42.93,fourn:'JULIEN',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-008',name:'DAAF',type:'materiel',cat:'Securite',unit:'pce',stockInit:0,seuil:2,prix:13.98,fourn:'ONELEC',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-009',name:'TRINGLE DE MANIVELLE',type:'materiel',cat:'Menuiserie',unit:'pce',stockInit:0,seuil:2,prix:17.80,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-010',name:'SUPPORT RIDEAU DE DOUCHE',type:'materiel',cat:'Salle de bain',unit:'pce',stockInit:0,seuil:2,prix:12.14,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-011',name:'ABATTANT WC',type:'materiel',cat:'Sanitaire',unit:'pce',stockInit:0,seuil:2,prix:6.55,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-012',name:'POIGNEE MANIVELLE',type:'materiel',cat:'Serrurerie',unit:'pce',stockInit:0,seuil:2,prix:17.64,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-013',name:'FLEXIBLE DE DOUCHE',type:'materiel',cat:'Salle de bain',unit:'pce',stockInit:0,seuil:2,prix:6.29,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-014',name:'INTERRUPTEUR LUMINEUX COULOIR',type:'materiel',cat:'Electricite',unit:'pce',stockInit:0,seuil:2,prix:13.89,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-015',name:'MITIGEUR BAIGNOIRE',type:'materiel',cat:'Sanitaire',unit:'pce',stockInit:0,seuil:2,prix:40.96,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-016',name:'MITIGEUR CUISINE',type:'materiel',cat:'Sanitaire',unit:'pce',stockInit:0,seuil:2,prix:22.91,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-017',name:'MITIGEUR LAVABO',type:'materiel',cat:'Sanitaire',unit:'pce',stockInit:0,seuil:2,prix:29.60,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-018',name:'BARRE DE DOUCHE',type:'materiel',cat:'Salle de bain',unit:'pce',stockInit:0,seuil:2,prix:10.44,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-019',name:'CUVETTE WC',type:'materiel',cat:'Sanitaire',unit:'pce',stockInit:0,seuil:1,prix:132.46,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-020',name:'RESERVOIR WC',type:'materiel',cat:'Sanitaire',unit:'pce',stockInit:0,seuil:1,prix:148.16,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-021',name:'GROOM',type:'materiel',cat:'Serrurerie',unit:'pce',stockInit:0,seuil:2,prix:38.73,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-022',name:'POIGNEE PORTE ENTREE APT',type:'materiel',cat:'Serrurerie',unit:'pce',stockInit:0,seuil:2,prix:16.06,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-023',name:'POIGNEE PORTE INTERIEUR APT',type:'materiel',cat:'Serrurerie',unit:'pce',stockInit:0,seuil:2,prix:12.90,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-024',name:'TABLE GIGOGNE',type:'materiel',cat:'Mobilier',unit:'pce',stockInit:0,seuil:1,prix:173.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-025',name:'CHAISE DE BUREAU',type:'materiel',cat:'Mobilier',unit:'pce',stockInit:0,seuil:1,prix:198.00,fourn:'JULIEN',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-026',name:'BROSSE WC',type:'produit',cat:'Sanitaire',unit:'pce',stockInit:0,seuil:5,prix:1.02,fourn:'LEBRUN',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-027',name:'COUVERTURE',type:'produit',cat:'Literie',unit:'pce',stockInit:0,seuil:5,prix:12.15,fourn:'EASYTEX',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-028',name:'AMPOULE LED',type:'produit',cat:'Electricite',unit:'pce',stockInit:0,seuil:10,prix:1.19,fourn:'MIEKO',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-029',name:'INTERRUPTEUR DOUBLE APPAREILLAGE',type:'materiel',cat:'Electricite',unit:'pce',stockInit:0,seuil:2,prix:7.27,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-030',name:'VMC',type:'materiel',cat:'Ventilation',unit:'pce',stockInit:0,seuil:1,prix:16.60,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-031',name:'MITIGEUR DOUCHE',type:'materiel',cat:'Sanitaire',unit:'pce',stockInit:0,seuil:2,prix:30.90,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-032',name:'BARRE RIDEAU DE DOUCHE',type:'materiel',cat:'Salle de bain',unit:'pce',stockInit:0,seuil:2,prix:12.14,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-033',name:'CYLINDRE A BOUTON PORTE ENTREE',type:'materiel',cat:'Serrurerie',unit:'pce',stockInit:0,seuil:2,prix:13.34,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-034',name:'SORTIE DE CAISSON',type:'materiel',cat:'Electricite',unit:'pce',stockInit:0,seuil:2,prix:19.30,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-035',name:'RADIATEUR 1000W',type:'materiel',cat:'Chauffage',unit:'pce',stockInit:0,seuil:1,prix:132.47,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-036',name:'RADIATEUR 1500W',type:'materiel',cat:'Chauffage',unit:'pce',stockInit:0,seuil:1,prix:147.86,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-037',name:'MATELAS B2',type:'materiel',cat:'Literie',unit:'pce',stockInit:0,seuil:1,prix:207.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-038',name:'BUREAU',type:'materiel',cat:'Mobilier',unit:'pce',stockInit:0,seuil:1,prix:288.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-039',name:'BIBLIOTHEQUE',type:'materiel',cat:'Mobilier',unit:'pce',stockInit:0,seuil:1,prix:304.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-040',name:'TABLE DE CHEVET',type:'materiel',cat:'Mobilier',unit:'pce',stockInit:0,seuil:1,prix:71.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-041',name:'TABLE A ROULETTE',type:'materiel',cat:'Mobilier',unit:'pce',stockInit:0,seuil:1,prix:384.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-042',name:'STRUCTURE B2',type:'materiel',cat:'Literie',unit:'pce',stockInit:0,seuil:1,prix:760.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-043',name:'SOMMIER LIT 1 PLACE X2',type:'materiel',cat:'Literie',unit:'pce',stockInit:0,seuil:1,prix:349.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-044',name:'MATELAS LIT 1 PLACE X2',type:'materiel',cat:'Literie',unit:'pce',stockInit:0,seuil:1,prix:409.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-045',name:'MEUBLE TELE',type:'materiel',cat:'Mobilier',unit:'pce',stockInit:0,seuil:1,prix:96.00,fourn:'TESSALI',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-046',name:'LAMPE FRONTALE',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:10.18,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-047',name:'PERCEUSE VISSEUSE',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:159.17,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-048',name:'MEULEUSE',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:344.28,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-049',name:'NETTOYEUR HP',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:599.00,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-050',name:'POSTE A SOUDER',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:null,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-051',name:'RABOT ELECTRIQUE',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:91.43,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-052',name:'SCIE CIRCULAIRE',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:70.01,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-053',name:'ASPIRATEUR',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:149.00,fourn:'G3 CONCEPT',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-054',name:'VISSEUSE A PERCUSSION',type:'materiel',cat:'Outillage',unit:'pce',stockInit:0,seuil:1,prix:67.50,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-055',name:'CUMULUS',type:'materiel',cat:'Plomberie',unit:'pce',stockInit:0,seuil:1,prix:311.03,fourn:'SIDER',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-056',name:'NEON CUISINE',type:'materiel',cat:'Electricite',unit:'pce',stockInit:0,seuil:2,prix:4.70,fourn:'MIEKO',loc:'',created:new Date().toISOString()},
+    {ref:'MAT-057',name:'PLAFONNIER LED',type:'materiel',cat:'Electricite',unit:'pce',stockInit:0,seuil:2,prix:18.90,fourn:'MIEKO',loc:'',created:new Date().toISOString()},
+  ];
+  save();
+}
+ 
+//  INIT 
+loadDemo();
+renderDash();
+checkSetup();
+</script>
+</body>
+</html>
