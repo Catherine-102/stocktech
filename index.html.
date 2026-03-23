@@ -1,3 +1,6 @@
+Stocktech final v3 · HTML
+Copier
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,11 +22,11 @@
   --safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);
 }
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font)}
-
+ 
 /* PAGES */
 .page{display:none;position:fixed;inset:0;bottom:calc(var(--nav-h) + var(--safe-b));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-bottom:16px}
 .page.active{display:block}
-
+ 
 /* TOPBAR */
 .topbar{position:sticky;top:0;z-index:50;background:rgba(8,11,18,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:calc(var(--safe-t) + 12px) 20px 14px;border-bottom:1px solid var(--border)}
 .topbar-row{display:flex;align-items:center;justify-content:space-between}
@@ -32,7 +35,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .topbar-sub{font-size:12px;color:var(--text2);margin-top:2px}
 .topbar-btn{background:var(--s3);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:9px 16px;font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer}
 .site-chip{display:inline-flex;align-items:center;gap:5px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);color:var(--accent);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700}
-
+ 
 /* BOTTOM NAV */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(8,11,18,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;height:calc(var(--nav-h) + var(--safe-b));padding-bottom:var(--safe-b)}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:8px 4px;position:relative}
@@ -45,7 +48,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .nav-scan-circle{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#6366f1);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 24px rgba(56,189,248,.45);margin-top:-16px;border:3px solid var(--bg);transition:transform .2s}
 .nav-scan-btn:active .nav-scan-circle{transform:scale(.92)}
 .nav-badge{position:absolute;top:6px;right:calc(50% - 20px);background:var(--red);color:white;border-radius:10px;font-size:9px;font-weight:700;padding:1px 5px}
-
+ 
 /* KPI */
 .kpi-scroll{display:flex;gap:12px;padding:16px 16px 0;overflow-x:auto;scrollbar-width:none}
 .kpi-scroll::-webkit-scrollbar{display:none}
@@ -57,19 +60,19 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .kpi-label{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text2);margin-bottom:8px}
 .kpi-val{font-size:32px;font-weight:800;line-height:1}
 .kpi-sub{font-size:11px;color:var(--text2);margin-top:4px}
-
+ 
 /* SECTION */
 .section-head{display:flex;align-items:center;justify-content:space-between;padding:20px 16px 10px}
 .section-title{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0}
-
+ 
 /* SEARCH */
 .search-wrap{padding:0 16px 12px;position:relative}
 .search-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:13px 16px 13px 44px;font-size:15px;font-family:var(--font);color:var(--text);outline:none}
 .search-input:focus{border-color:var(--accent)}
 .search-input::placeholder{color:var(--text3)}
 .search-icon{position:absolute;left:28px;top:50%;transform:translateY(-50%);font-size:18px;pointer-events:none}
-
+ 
 /* ARTICLE CARD */
 .article-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);margin:0 16px 10px;padding:14px 16px;transition:border-color .2s}
 .article-card:active{border-color:var(--accent)}
@@ -93,7 +96,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .pill-ok{background:rgba(52,211,153,.15);color:var(--green)}
 .pill-warn{background:rgba(251,191,36,.15);color:var(--orange)}
 .pill-low{background:rgba(248,113,113,.15);color:var(--red)}
-
+ 
 /* SCAN */
 .scan-container{padding:16px}
 .cam-box{position:relative;width:100%;aspect-ratio:1;background:#000;border-radius:20px;overflow:hidden;border:2px solid var(--border);margin-bottom:14px}
@@ -123,7 +126,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .type-opt{flex:1;padding:13px;border-radius:12px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;background:var(--s2);border:2px solid var(--border);color:var(--text2);font-family:var(--font);transition:all .2s}
 .type-opt.sel-in{background:rgba(52,211,153,.12);border-color:var(--green);color:var(--green)}
 .type-opt.sel-out{background:rgba(248,113,113,.12);border-color:var(--red);color:var(--red)}
-
+ 
 /* FOUND CARD */
 .found-card{background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.3);border-radius:var(--radius);padding:14px;margin-bottom:14px;display:none;animation:fadeIn .2s ease}
 .found-card.show{display:block}
@@ -139,7 +142,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .qty-input{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:12px;font-size:24px;font-family:var(--mono);font-weight:700;color:var(--text);text-align:center;outline:none;min-width:0}
 .btn-add-bl{flex:1.5;padding:14px;border-radius:12px;font-size:16px;font-weight:800;font-family:var(--font);cursor:pointer;border:none;background:var(--green);color:#071a10}
 .btn-add-bl:active{transform:scale(.96)}
-
+ 
 /* BL */
 .bl-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px}
 .bl-header{padding:13px 16px;background:var(--s2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
@@ -157,11 +160,11 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .bl-rm{background:none;border:none;color:var(--text3);font-size:24px;cursor:pointer;padding:2px 6px;flex-shrink:0}
 .bl-rm:active{color:var(--red)}
 .bl-empty-msg{padding:28px;text-align:center;color:var(--text2);font-size:14px}
-
+ 
 /* VALIDATE BOX */
 .validate-box{background:var(--s2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px;display:none}
 .validate-box.show{display:block}
-
+ 
 /* BUTTONS */
 .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;border-radius:14px;font-size:16px;font-weight:700;font-family:var(--font);cursor:pointer;border:none;width:100%}
 .btn:active{transform:scale(.97)}
@@ -172,7 +175,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .btn-sm{padding:8px 14px;font-size:13px;border-radius:10px;width:auto}
 .btn-row{display:flex;gap:10px}
 .btn-row .btn{flex:1}
-
+ 
 /* SHEETS */
 .sheet-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.75);backdrop-filter:blur(4px)}
 .sheet-overlay.open{display:block}
@@ -186,7 +189,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .field input,.field select{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:16px;font-family:var(--font);color:var(--text);outline:none;-webkit-appearance:none;appearance:none}
 .field input:focus,.field select:focus{border-color:var(--accent)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
+ 
 /* HISTORY */
 .hist-item{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);margin:0 16px 8px;padding:12px 14px}
 .hist-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px;gap:8px}
@@ -197,14 +200,14 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .hist-date{font-size:11px;color:var(--text2);font-family:var(--mono)}
 .hist-ref{font-size:11px;color:var(--accent);background:rgba(56,189,248,.08);padding:2px 7px;border-radius:5px;font-family:var(--mono)}
 .hist-tech{font-size:11px;color:var(--text2)}
-
+ 
 /* ALERT */
 .alert-card{background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.22);border-radius:var(--radius);margin:0 16px 10px;padding:14px 16px}
 .alert-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .alert-name{font-size:14px;font-weight:700}
 .alert-val{font-family:var(--mono);font-size:20px;font-weight:800;color:var(--red)}
 .alert-meta{font-size:11px;color:var(--text2)}
-
+ 
 /* BL PRINT */
 .bl-print-preview{background:white;color:#1a1a2e;border-radius:var(--radius);padding:20px;margin-bottom:14px;display:none}
 .bl-print-preview.show{display:block}
@@ -220,11 +223,11 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .bl-print-total-label{font-size:13px;font-weight:700;color:#1E2538}
 .bl-print-total-val{font-size:16px;font-weight:800;color:#1E2538}
 .bl-print-footer{margin-top:14px;padding-top:10px;border-top:1px solid #e2e8f0;font-size:11px;color:#94a3b8;display:flex;justify-content:space-between}
-
+ 
 .empty-state{text-align:center;padding:50px 20px;color:var(--text2)}
 .empty-icon{font-size:48px;margin-bottom:10px;opacity:.35}
 .empty-text{font-size:14px}
-
+ 
 /* SETTINGS */
 .settings-block{background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);margin:0 16px 12px;overflow:hidden}
 .settings-row{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--border);cursor:pointer}
@@ -232,26 +235,26 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .settings-label{font-size:15px;font-weight:600}
 .settings-sub{font-size:12px;color:var(--text2);margin-top:2px}
 .settings-arrow{color:var(--text3);font-size:20px}
-
+ 
 /* TOAST */
 #toast{position:fixed;top:calc(var(--safe-t) + 12px);left:16px;right:16px;z-index:999;background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px 18px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;transform:translateY(-120px);opacity:0;transition:all .3s cubic-bezier(.32,.72,0,1);pointer-events:none}
 #toast.show{transform:translateY(0);opacity:1}
 #toast.success{border-color:var(--green)}
 #toast.error{border-color:var(--red)}
 #toast.warn{border-color:var(--orange)}
-
+ 
 /* SETUP MODAL */
 .setup-overlay{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);align-items:flex-end;justify-content:center}
 .setup-overlay.open{display:flex}
 .setup-box{background:var(--s1);border-radius:24px 24px 0 0;border-top:1px solid var(--border);width:100%;padding:28px 24px calc(28px + var(--safe-b));max-height:90vh;overflow-y:auto}
 .setup-title{font-size:24px;font-weight:800;margin-bottom:8px}
 .setup-sub{font-size:15px;color:var(--text2);line-height:1.6;margin-bottom:24px}
-
+ 
 select option{background:var(--s2);color:var(--text)}
 </style>
 </head>
 <body>
-
+ 
 <!--  PAGE ACCUEIL  -->
 <div class="page active" id="page-home">
   <div class="topbar">
@@ -273,7 +276,7 @@ select option{background:var(--s2);color:var(--text)}
   <div id="recent-zone"></div>
   <div style="height:8px"></div>
 </div>
-
+ 
 <!--  PAGE MATÉRIELS  -->
 <div class="page" id="page-mat">
   <div class="topbar">
@@ -289,7 +292,7 @@ select option{background:var(--s2);color:var(--text)}
   <div id="mat-list"></div>
   <div style="height:8px"></div>
 </div>
-
+ 
 <!--  PAGE PRODUITS  -->
 <div class="page" id="page-prod">
   <div class="topbar">
@@ -305,7 +308,7 @@ select option{background:var(--s2);color:var(--text)}
   <div id="prod-list"></div>
   <div style="height:8px"></div>
 </div>
-
+ 
 <!--  PAGE SCAN BL  -->
 <div class="page" id="page-scan">
   <div class="topbar">
@@ -359,7 +362,7 @@ select option{background:var(--s2);color:var(--text)}
         <button class="btn-add-bl" onclick="addToBL()">➕ BL</button>
       </div>
     </div>
-
+ 
     <!-- BL liste -->
     <div class="bl-box">
       <div class="bl-header">
@@ -368,16 +371,16 @@ select option{background:var(--s2);color:var(--text)}
       </div>
       <div id="bl-inner"><div class="bl-empty-msg">Scannez des articles pour constituer le BL</div></div>
     </div>
-
+ 
     <!-- Infos BL -->
     <div class="validate-box" id="validate-box">
       <div class="field"><label>Technicien</label><input type="text" id="vbl-tech" placeholder="Prénom NOM" style="background:var(--s3)"></div>
       <div class="field" style="margin-bottom:0"><label>Commentaire</label><input type="text" id="vbl-comment" placeholder="Chantier, affaire, note…" style="background:var(--s3)"></div>
     </div>
-
+ 
     <!-- Aperçu BL imprimable -->
     <div class="bl-print-preview" id="bl-preview"></div>
-
+ 
     <div id="bl-action-btns" style="display:none">
       <button class="btn btn-success" onclick="validateBL()" style="margin-bottom:10px">✅ Valider et mettre à jour le stock</button>
       <button class="btn btn-ghost" onclick="previewBL()" style="margin-bottom:10px">👁 Aperçu / Copier le BL</button>
@@ -385,7 +388,7 @@ select option{background:var(--s2);color:var(--text)}
     <div style="height:8px"></div>
   </div>
 </div>
-
+ 
 <!--  PAGE HISTORIQUE  -->
 <div class="page" id="page-hist">
   <div class="topbar">
@@ -409,7 +412,7 @@ select option{background:var(--s2);color:var(--text)}
   <div id="hist-list"></div>
   <div style="height:8px"></div>
 </div>
-
+ 
 <!--  PAGE RÉGLAGES  -->
 <div class="page" id="page-settings">
   <div class="topbar">
@@ -424,7 +427,7 @@ select option{background:var(--s2);color:var(--text)}
       <div class="settings-arrow">›</div>
     </div>
   </div>
-
+ 
   <div style="padding:16px 16px 8px"><div class="section-title"><div class="dot" style="background:var(--green)"></div>Import catalogue</div></div>
   <div style="padding:0 16px 12px">
     <div style="background:var(--s1);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px">
@@ -440,20 +443,20 @@ select option{background:var(--s2);color:var(--text)}
       4. Importer ici
     </div>
   </div>
-
+ 
   <div style="padding:8px 16px 8px"><div class="section-title"><div class="dot" style="background:var(--accent)"></div>Export données</div></div>
   <div style="padding:0 16px 12px;display:flex;flex-direction:column;gap:10px">
     <button class="btn btn-ghost" onclick="exportCSV()">📊 Exporter l'historique (CSV Excel)</button>
     <button class="btn btn-ghost" onclick="exportCatalogue()">📋 Exporter le catalogue (CSV Excel)</button>
   </div>
-
+ 
   <div style="padding:8px 16px 8px"><div class="section-title"><div class="dot" style="background:var(--red)"></div>Zone de danger</div></div>
   <div style="padding:0 16px 16px">
     <button class="btn btn-danger-soft" onclick="resetAll()">🗑 Effacer toutes les données</button>
   </div>
   <div style="height:8px"></div>
 </div>
-
+ 
 <!--  NAV  -->
 <nav class="bottom-nav">
   <div class="nav-item active" id="nav-home" onclick="goPage('home')">
@@ -474,7 +477,7 @@ select option{background:var(--s2);color:var(--text)}
     <div class="nav-icon">⚙️</div><div class="nav-label">Réglages</div>
   </div>
 </nav>
-
+ 
 <!--  SHEET AJOUTER/MODIFIER  -->
 <div class="sheet-overlay" id="ov-add" onclick="closeSheet('add')"></div>
 <div class="sheet" id="sh-add">
@@ -506,7 +509,7 @@ select option{background:var(--s2);color:var(--text)}
     </div>
   </div>
 </div>
-
+ 
 <!--  SHEET MOUVEMENT  -->
 <div class="sheet-overlay" id="ov-mvt" onclick="closeSheet('mvt')"></div>
 <div class="sheet" id="sh-mvt">
@@ -541,7 +544,7 @@ select option{background:var(--s2);color:var(--text)}
     </div>
   </div>
 </div>
-
+ 
 <!--  SHEET SITE  -->
 <div class="sheet-overlay" id="ov-site" onclick="closeSheet('site')"></div>
 <div class="sheet" id="sh-site">
@@ -559,7 +562,7 @@ select option{background:var(--s2);color:var(--text)}
     </div>
   </div>
 </div>
-
+ 
 <!--  SETUP PREMIER LANCEMENT  -->
 <div class="setup-overlay" id="setup-overlay">
   <div class="setup-box">
@@ -571,9 +574,9 @@ select option{background:var(--s2);color:var(--text)}
     <button class="btn btn-primary" onclick="saveSetup()" style="margin-top:8px">✅ Démarrer</button>
   </div>
 </div>
-
+ 
 <div id="toast"><span id="t-icon">✅</span><span id="t-msg"></span></div>
-
+ 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zxing-js/0.20.0/zxing.min.js"></script>
 <script>
 //  DATA 
@@ -586,13 +589,13 @@ let mvtType  = 'entree';
 let currentArt = null;
 let cameraOn = false;
 let codeReader = null;
-
+ 
 function save() {
   localStorage.setItem('st_art', JSON.stringify(articles));
   localStorage.setItem('st_mvt', JSON.stringify(mouvements));
   localStorage.setItem('st_cfg', JSON.stringify(config));
 }
-
+ 
 //  STOCK 
 function getStock(ref) {
   const a = articles.find(x => x.ref === ref);
@@ -616,7 +619,7 @@ function valeurStock() {
   return articles.reduce((tot,a) => tot + (getStock(a.ref) * (parseFloat(a.prix)||0)), 0);
 }
 function fmtEur(v){ return v.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'; }
-
+ 
 //  NAVIGATION 
 function goPage(name) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -632,7 +635,7 @@ function goPage(name) {
   if(name==='settings') renderSettings();
   if(name==='scan')     setTimeout(()=>document.getElementById('manual-input').focus(),400);
 }
-
+ 
 //  SETUP PREMIER LANCEMENT 
 function checkSetup() {
   if (!config.site) {
@@ -661,7 +664,7 @@ function updateSiteChip() {
   const sn = document.getElementById('settings-site-name');
   if(sn) sn.textContent = (config.site||'Non configuré') + (config.tech?' — '+config.tech:'');
 }
-
+ 
 //  DASHBOARD 
 function renderDash() {
   const d=new Date();
@@ -672,25 +675,25 @@ function renderDash() {
   const today=d.toDateString();
   const todayN=mouvements.filter(m=>new Date(m.date).toDateString()===today).length;
   const valTot=valeurStock();
-
+ 
   const badge=document.getElementById('alert-badge');
   badge.style.display=alts.length?'block':'none';
   badge.textContent=alts.length;
-
+ 
   document.getElementById('kpi-zone').innerHTML=`
     <div class="kpi-card kpi-blue"><div class="kpi-label">Matériels</div><div class="kpi-val">${mats}</div><div class="kpi-sub">Références</div></div>
     <div class="kpi-card kpi-green"><div class="kpi-label">Produits</div><div class="kpi-val">${prods}</div><div class="kpi-sub">Références</div></div>
     <div class="kpi-card kpi-red"><div class="kpi-label">Alertes</div><div class="kpi-val">${alts.length}</div><div class="kpi-sub">Stock faible</div></div>
     <div class="kpi-card kpi-orange"><div class="kpi-label">Aujourd'hui</div><div class="kpi-val">${todayN}</div><div class="kpi-sub">Mouvements</div></div>
     <div class="kpi-card kpi-purple"><div class="kpi-label">Valeur stock</div><div class="kpi-val" style="font-size:20px;margin-top:4px">${fmtEur(valTot)}</div><div class="kpi-sub">Total HT</div></div>`;
-
+ 
   const az=document.getElementById('alerts-zone');
   az.innerHTML=alts.length ? alts.map(a=>{const s=getStock(a.ref);return`
     <div class="alert-card">
       <div class="alert-top"><div class="alert-name">${a.name}</div><div class="alert-val">${s} ${a.unit}</div></div>
       <div class="alert-meta">${a.ref} · ${a.cat||'—'} · Seuil : ${a.seuil}${a.fourn?' · &#x1F4E6; '+a.fourn:''}</div>
     </div>`;}).join('') : `<div class="empty-state"><div class="empty-icon">&#x2705;</div><div class="empty-text">Tous les stocks sont au-dessus du seuil</div></div>`;
-
+ 
   const rec=[...mouvements].reverse().slice(0,6);
   document.getElementById('recent-zone').innerHTML=rec.length ? rec.map(m=>{
     const a=articles.find(x=>x.ref===m.ref);
@@ -702,7 +705,7 @@ function renderDash() {
       ${m.tech?`<span class="hist-tech">&#x1F464; ${m.tech}</span>`:''}</div></div>`;
   }).join('') : `<div class="empty-state"><div class="empty-icon">&#x1F4CB;</div><div class="empty-text">Aucun mouvement</div></div>`;
 }
-
+ 
 //  LISTES 
 function renderList(type) {
   const isM=type==='mat', atype=isM?'materiel':'produit';
@@ -734,7 +737,7 @@ function renderList(type) {
     </div>`;
   }).join('');
 }
-
+ 
 //  HISTORIQUE 
 function renderHist() {
   const q=(document.getElementById('search-hist')?.value||'').toLowerCase();
@@ -763,10 +766,10 @@ function renderHist() {
     </div>`;
   }).join('');
 }
-
+ 
 //  RÉGLAGES 
 function renderSettings() { updateSiteChip(); }
-
+ 
 //  SHEETS 
 function openSheet(id, extra) {
   if(id==='add'){
@@ -831,7 +834,7 @@ function setMvtType(t){
   document.getElementById('mv-opt-out').className='type-opt'+(t==='sortie'?' sel-out':'');
 }
 function chMvtQty(d){const e=document.getElementById('mv-qty');e.value=Math.max(1,(parseInt(e.value)||1)+d);}
-
+ 
 //  SAVE ARTICLE 
 function saveArticle(){
   const ref=document.getElementById('f-ref').value.trim();
@@ -852,7 +855,7 @@ function saveArticle(){
   save(); closeSheet('add');
   renderList(art.type==='materiel'?'mat':'prod'); renderDash();
 }
-
+ 
 //  SAVE MOUVEMENT 
 function saveMvt(){
   const ref=document.getElementById('mv-ref-h').value;
@@ -867,7 +870,7 @@ function saveMvt(){
   toast(`${mvtType==='entree'?'Entrée':'Sortie'} enregistrée &#x2705;`,'success');
   renderList(a?.type==='materiel'?'mat':'prod'); renderDash();
 }
-
+ 
 //  DELETE 
 function delArt(ref){
   if(!confirm('Supprimer cet article ?'))return;
@@ -875,12 +878,12 @@ function delArt(ref){
   articles=articles.filter(x=>x.ref!==ref); save();
   renderList(a?.type==='materiel'?'mat':'prod'); renderDash(); toast('Supprimé');
 }
-
+ 
 //  CAMERA 
 let scanLoop = null;
 let scanCanvas = null;
 let scanCtx = null;
-
+ 
 async function startCamera(){
   if(cameraOn)return;
   document.getElementById('cam-status').textContent='Initialisation...';
@@ -895,11 +898,11 @@ async function startCamera(){
     cameraOn=true;
     document.getElementById('btn-start').style.display='none';
     document.getElementById('btn-stop').style.display='block';
-
+ 
     // Prepare canvas for frame capture
     scanCanvas=document.createElement('canvas');
     scanCtx=scanCanvas.getContext('2d',{willReadFrequently:true});
-
+ 
     // Try native BarcodeDetector first (Chrome Android 83+, Samsung Internet)
     if('BarcodeDetector' in window){
       document.getElementById('cam-status').textContent='Scan actif - Pointez vers le QR code';
@@ -957,7 +960,7 @@ async function startCamera(){
     toast('Autorisez la camera dans les parametres Chrome','error');
   }
 }
-
+ 
 function stopCamera(){
   if(!cameraOn)return;
   if(scanLoop){cancelAnimationFrame(scanLoop);scanLoop=null;}
@@ -983,7 +986,7 @@ function setScanType(t){
 }
 function processManual(){const v=document.getElementById('manual-input').value.trim();if(v)findArt(v);}
 document.getElementById('manual-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();processManual();}});
-
+ 
 function findArt(code){
   const a=articles.find(x=>x.ref.toLowerCase()===code.toLowerCase()||x.name.toLowerCase()===code.toLowerCase());
   document.getElementById('manual-input').value=code;
@@ -1000,7 +1003,7 @@ function findArt(code){
   toast('&#x2705; '+a.name,'success');
 }
 function changeQty(d){const e=document.getElementById('fc-qty');e.value=Math.max(1,(parseInt(e.value)||1)+d);}
-
+ 
 function addToBL(){
   if(!currentArt)return;
   const qty=parseInt(document.getElementById('fc-qty').value)||1;
@@ -1013,7 +1016,7 @@ function addToBL(){
   toast('Ajouté au BL &#x2705;','success');
   if(navigator.vibrate)navigator.vibrate([60,30,60]);
 }
-
+ 
 function renderBL(){
   const inner=document.getElementById('bl-inner');
   const count=document.getElementById('bl-count');
@@ -1040,10 +1043,10 @@ function renderBL(){
       <button class="bl-rm" onclick="rmBL(${i})">×</button>
     </div>`).join('');
 }
-
+ 
 function rmBL(i){blItems.splice(i,1);renderBL();}
 function clearBL(){if(!confirm('Vider le BL ?'))return;blItems=[];renderBL();}
-
+ 
 //  APERÇU / COPIE BL 
 function previewBL(){
   if(!blItems.length)return;
@@ -1051,10 +1054,10 @@ function previewBL(){
   const comment=document.getElementById('vbl-comment').value.trim();
   const now=new Date();
   const dateStr=now.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'})+' à '+now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
-
+ 
   const totalHT=blItems.reduce((s,i)=>s+(i.prix?i.qty*parseFloat(i.prix):0),0);
   const hasPrix=blItems.some(i=>i.prix);
-
+ 
   const rows=blItems.map(item=>`
     <tr>
       <td><span class="bl-print-ref">${item.ref}</span></td>
@@ -1063,7 +1066,7 @@ function previewBL(){
       <td style="text-align:center;font-weight:700">${item.qty} ${item.unit}</td>
       ${hasPrix?`<td style="text-align:right">${item.prix?(item.qty*parseFloat(item.prix)).toLocaleString('fr-FR',{minimumFractionDigits:2})+'  €':'—'}</td>`:''}
     </tr>`).join('');
-
+ 
   const preview=document.getElementById('bl-preview');
   preview.innerHTML=`
     <div class="bl-print-header">
@@ -1088,7 +1091,7 @@ function previewBL(){
       <span>${dateStr}</span>
     </div>`;
   preview.classList.add('show');
-
+ 
   // Copie texte pour WhatsApp / email
   let txt=`&#x1F4CB; BON DE LIVRAISON\n`;
   txt+=`Site : ${config.site||'—'}\nTechnicien : ${tech}\nDate : ${dateStr}\n`;
@@ -1102,7 +1105,7 @@ function previewBL(){
     txt+='\n';
   });
   if(hasPrix&&totalHT>0) txt+=`${'─'.repeat(40)}\nTotal HT : ${fmtEur(totalHT)}\n`;
-
+ 
   if(navigator.clipboard&&navigator.clipboard.writeText){
     navigator.clipboard.writeText(txt).then(()=>toast('BL copié dans le presse-papiers &#x1F4CB;','success'));
   } else {
@@ -1113,7 +1116,7 @@ function previewBL(){
   }
   preview.scrollIntoView({behavior:'smooth'});
 }
-
+ 
 function validateBL(){
   if(!blItems.length){toast('BL vide','error');return;}
   for(const item of blItems){
@@ -1130,7 +1133,7 @@ function validateBL(){
   if(navigator.vibrate)navigator.vibrate([100,50,100,50,200]);
   renderDash();
 }
-
+ 
 //  IMPORT CSV 
 function importCSV(event){
   const file=event.target.files[0]; if(!file)return;
@@ -1185,7 +1188,7 @@ function importCSV(event){
   };
   reader.readAsText(file,'UTF-8');
 }
-
+ 
 //  EXPORTS CSV 
 function exportCSV(){
   if(!mouvements.length){toast('Aucun mouvement','warn');return;}
@@ -1224,7 +1227,7 @@ function resetAll(){
   if(!confirm('&#x26A0; Effacer TOUTES les données ?\n\nCette action est irréversible.'))return;
   articles=[];mouvements=[];blItems=[];save();renderDash();toast('Données effacées');
 }
-
+ 
 //  TOAST 
 let toastT;
 function toast(msg,type='success'){
@@ -1233,7 +1236,7 @@ function toast(msg,type='success'){
   document.getElementById('t-icon').textContent=type==='error'?'&#x26A0;️':type==='warn'?'&#x26A0;':'&#x2705;';
   el.className='show '+type;clearTimeout(toastT);toastT=setTimeout(()=>el.className='',3200);
 }
-
+ 
 //  DEMO DATA 
 function loadDemo(){
   if(articles.length>0)return;
@@ -1252,7 +1255,7 @@ function loadDemo(){
   ];
   save();
 }
-
+ 
 //  INIT 
 loadDemo();
 renderDash();
